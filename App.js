@@ -7,9 +7,9 @@ import ProfileScreen from './src/ProfileScreen';
 import WishlistScreen from './src/WishlistScreen';
 
 const App = TabNavigator({
-    SearchScreen: { screen: SearchScreen},
-    WishlistScreen: { screen: WishlistScreen },
-    ProfileScreen: { screen: ProfileScreen },
+    Search: { screen: SearchScreen},
+    Wishlists: { screen: WishlistScreen },
+    Profile: { screen: ProfileScreen },
 })
 
 export default App;

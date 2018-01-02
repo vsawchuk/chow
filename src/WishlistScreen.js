@@ -18,7 +18,6 @@ class WishlistScreen extends Component {
     )
   }
   render() {
-    const { navigate } = this.props.navigation;
     return (
       <Container>
         <Header style={styles.header}>
@@ -28,7 +27,7 @@ class WishlistScreen extends Component {
           </Body>
           <Right>
             <Button transparent>
-              <Icon style={styles.greyText} name="ios-add" />
+              <Icon style={styles.greyText} name="ios-add-circle-outline" />
             </Button>
           </Right>
         </Header>
