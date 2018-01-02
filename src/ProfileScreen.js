@@ -1,15 +1,10 @@
 import React, { Component } from 'react';
 import {
-  View,
   Text,
   Image,
-  Button,
 } from 'react-native';
-import styles from './styles.js';
-
-const GOLD = '#F9A602';
-const GREY = '#F3F2E9';
-const DARKBLUE = '#2F3553';
+import { Container, Header, Left, Body, Right, Button, Title } from 'native-base';
+import styles from './styles';
 
 class SearchScreen extends Component {
   static navigationOptions = {
@@ -21,23 +16,20 @@ class SearchScreen extends Component {
     )
   }
   render() {
-    const { navigate } = this.props.navigation;
     return (
-      <View>
-        <View style={styles.profileHeader}>
-          <View style={styles.flexContainer}/>
-          <View style={styles.flexContainer}>
-            <Text style={styles.headerTitle}>Profile</Text>
-          </View>
-          <View style={styles.flexContainer}>
-          // TODO: style button to be completely inline with title
-            <Button title="Log Out" color={GREY}/>
-          </View>
-        </View>
-        <View style={styles.profile}>
-          <Text>Profile Screen</Text>
-        </View>
-      </View>
+      <Container>
+        <Header style={styles.header}>
+          <Left />
+          <Body>
+            <Title style={styles.greyText}>Profile</Title>
+          </Body>
+          <Right>
+            <Button transparent>
+              <Text style={styles.greyText}>Log Out</Text>
+            </Button>
+          </Right>
+        </Header>
+      </Container>
     );
   }
 }

@@ -19,16 +19,11 @@ const styles = StyleSheet.create({
     backgroundColor: 'green',
     flex: 1,
   },
-  profileHeader: {
-    flexDirection: 'row',
-    height: 100,
+  header: {
     backgroundColor: GOLD,
   },
-  headerTitle: {
-    fontSize: 25,
-    fontWeight: 'bold',
+  greyText: {
     color: GREY,
-    paddingBottom: 10,
   },
   navIcon: {
     height: 30,
