@@ -25,6 +25,9 @@ const styles = StyleSheet.create({
   goldText: {
     color: GOLD,
   },
+  goldBackground: {
+    backgroundColor: GOLD,
+  },
   greyText: {
     color: GREY,
   },

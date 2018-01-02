@@ -397,6 +397,9 @@ class SearchScreen extends Component {
                   ))}
                 </Picker>
               </Item>
+              <Button style={[ styles.goldBackground, { alignSelf: 'center' }]}>
+                <Text style={styles.greyText}>Add to Wishlist</Text>
+              </Button>
             </Form>
           </Modal>
         </Content>
