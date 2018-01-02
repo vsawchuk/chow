@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
   greyBackground: {
     backgroundColor: GREY,
   },
-  navIcon: {
+  yelpBurst: {
     height: 30,
     width: 30,
   },

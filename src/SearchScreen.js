@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import {
   Image,
   Text,
+  View,
 } from 'react-native';
 import { Container, Header, Item, Icon, Input, Button, Content, List, ListItem, Body, Thumbnail } from 'native-base';
 import styles from './styles';
@@ -315,7 +316,7 @@ class SearchScreen extends Component {
     )
   }
   renderResult(result) {
-    const formattedRating = this.renderRating(result.rating);
+    const formattedRating = this.renderRating(result);
     return (
       <ListItem>
         <Thumbnail square size={80} source={{ uri: result.image_url }} />
@@ -326,10 +327,15 @@ class SearchScreen extends Component {
       </ListItem>
     );
   }
-  renderRating(rating) {
-    const requireImage = ratingMap[rating];
+  renderRating(result) {
+    const requireImage = ratingMap[result.rating];
+    reviewCount = `${result.review_count} Reviews`;
     return (
-      <Image source={requireImage} />
+      <Text>
+        <Image source={requireImage} />
+        <Image source={require('../assets/yelp_burst/Screen/Yelp_burst_positive_RGB.png')} style={styles.yelpBurst}/>
+        <Text>{reviewCount}</Text>
+      </Text>
     )
   }
   render() {
