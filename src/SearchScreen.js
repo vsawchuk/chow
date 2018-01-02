@@ -325,6 +325,7 @@ class SearchScreen extends Component {
     )
   }
   renderResult(result) {
+    // TODO: format display address properly based on length of display_address array
     const formattedRating = this.renderRating(result);
     return (
       <ListItem>
