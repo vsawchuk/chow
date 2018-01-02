@@ -24,12 +24,11 @@ const styles = StyleSheet.create({
     height: 100,
     backgroundColor: GOLD,
   },
-  profileHeaderButton: {
-    fontSize: 15,
-  },
   headerTitle: {
-    fontSize: 20,
+    fontSize: 25,
+    fontWeight: 'bold',
     color: GREY,
+    paddingBottom: 10,
   },
   navIcon: {
     height: 30,
@@ -37,11 +36,9 @@ const styles = StyleSheet.create({
   },
   flexContainer: {
     alignItems: 'flex-end',
+    justifyContent: 'center',
     flex: 1,
     flexDirection: 'row',
-    borderRadius: 4,
-    borderWidth: 0.5,
-    borderColor: '#d6d7da',
   },
 });
 
