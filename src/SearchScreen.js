@@ -322,7 +322,13 @@ class SearchScreen extends Component {
         <Thumbnail square size={80} source={{ uri: result.image_url }} />
         <Body>
           <Text>{result.name}</Text>
-          {formattedRating}
+          <View flexDirection='row'>
+            {formattedRating}
+            <Button icon transparent style={[{ flex: 1 }]}>
+              <Icon name="ios-add-circle" style={styles.goldText}/>
+            </Button>
+          </View>
+          <Text>{result.location.display_address}</Text>
         </Body>
       </ListItem>
     );
@@ -331,7 +337,7 @@ class SearchScreen extends Component {
     const requireImage = ratingMap[result.rating];
     reviewCount = `${result.review_count} Reviews`;
     return (
-      <Text>
+      <Text style={[{ flex: 4 }]}>
         <Image source={requireImage} />
         <Image source={require('../assets/yelp_burst/Screen/Yelp_burst_positive_RGB.png')} style={styles.yelpBurst}/>
         <Text>{reviewCount}</Text>
