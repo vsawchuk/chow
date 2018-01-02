@@ -5,7 +5,8 @@ import {
   Image,
   TouchableHighlight,
 } from 'react-native';
-import styles from './styles.js';
+import { Container, Header, Left, Body, Right, Button, Title, Icon } from 'native-base';
+import styles from './styles';
 
 class WishlistScreen extends Component {
   static navigationOptions = {
@@ -19,9 +20,19 @@ class WishlistScreen extends Component {
   render() {
     const { navigate } = this.props.navigation;
     return (
-      <View style={styles.wishlist}>
-        <Text>Wishlist Screen</Text>
-      </View>
+      <Container>
+        <Header style={styles.header}>
+          <Left />
+          <Body>
+            <Title style={styles.greyText}>Wishlists</Title>
+          </Body>
+          <Right>
+            <Button transparent>
+              <Icon style={styles.greyText} name="ios-add" />
+            </Button>
+          </Right>
+        </Header>
+      </Container>
     );
   }
 }
