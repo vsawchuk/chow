@@ -11,7 +11,18 @@ class SearchScreen extends Component {
       <Icon name="md-person" style={[{ color: tintColor }]} />
     ),
   }
+  constructor() {
+    super();
+    this.state = { loggedIn: false };
+    this.changeLogInStatus = this.changeLogInStatus.bind(this);
+  }
+  changeLogInStatus() {
+    this.setState((previousState) => {
+      return { loggedIn: !previousState.loggedIn };
+    });
+  }
   render() {
+    const headerButtonText = this.state.loggedIn ? 'Log Out' : 'Log In';
     return (
       <Container>
         <Header style={styles.header}>
@@ -20,8 +31,8 @@ class SearchScreen extends Component {
             <Title style={styles.greyText}>Profile</Title>
           </Body>
           <Right>
-            <Button transparent>
-              <Text style={styles.greyText}>Log Out</Text>
+            <Button transparent onPress={this.changeLogInStatus}>
+              <Text style={styles.greyText}>{ headerButtonText }</Text>
             </Button>
           </Right>
         </Header>
