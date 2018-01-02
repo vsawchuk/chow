@@ -31,6 +31,9 @@ const styles = StyleSheet.create({
   greyBackground: {
     backgroundColor: GREY,
   },
+  whiteBackground: {
+    backgroundColor: 'white',
+  },
   yelpBurst: {
     height: 30,
     width: 30,

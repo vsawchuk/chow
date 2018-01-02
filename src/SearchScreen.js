@@ -2,10 +2,11 @@
 import React, { Component } from 'react';
 import {
   Image,
+  Modal,
   Text,
   View,
 } from 'react-native';
-import { Container, Header, Item, Icon, Input, Button, Content, List, ListItem, Body, Thumbnail } from 'native-base';
+import { Container, Header, Item, Icon, Input, Button, Content, List, ListItem, Body, Thumbnail, Form, Label , Picker} from 'native-base';
 import styles from './styles';
 
 const searchResults = {
@@ -275,6 +276,8 @@ const searchResults = {
   ],
 }
 
+const wishlists = ['My Wishlist', 'Seattle Wishlist', 'Going Home'];
+
 const ratingMap = {
   0: require('../assets/yelp_stars/small/small_0.png'),
   0.5: require('../assets/yelp_stars/small/small_0.png'),
@@ -297,10 +300,16 @@ class SearchScreen extends Component {
   }
   constructor() {
     super();
-    this.state = { results: [] };
+    this.state = {
+      results: [],
+      wishlistModalVisible: false,
+      wishlist: wishlists[0],
+    };
     this.getResults = this.getResults.bind(this);
     this.renderResults = this.renderResults.bind(this);
     this.renderResult = this.renderResult.bind(this);
+    this.wishlistModalVisibility = this.wishlistModalVisibility.bind(this);
+    this.closeWishlistModal = this.closeWishlistModal.bind(this);
   }
   getResults() {
     this.setState((previousState) => {
@@ -324,7 +333,7 @@ class SearchScreen extends Component {
           <Text>{result.name}</Text>
           <View flexDirection='row'>
             {formattedRating}
-            <Button icon transparent style={[{ flex: 1 }]}>
+            <Button icon transparent style={[{ flex: 1 }]} onPress={this.wishlistModalVisibility}>
               <Icon name="ios-add-circle" style={styles.goldText}/>
             </Button>
           </View>
@@ -343,6 +352,15 @@ class SearchScreen extends Component {
         <Text>{reviewCount}</Text>
       </Text>
     )
+  }
+  wishlistModalVisibility() {
+    this.setState((previousState) => {
+      return { wishlistModalVisible: !previousState.wishlistModalVisible };
+    });
+  }
+  closeWishlistModal() {
+    this.wishlistModalVisibility();
+    this.setState({ wishlist: wishlists[0] });
   }
   render() {
     let content;
@@ -363,6 +381,24 @@ class SearchScreen extends Component {
         </Header>
         <Content>
           {content}
+          <Modal transparent={false} animationType='slide' visible={this.state.wishlistModalVisible} style={styles.greyBackground} >
+            <View style={{ height: 40 }} />
+            <Button style={ styles.whiteBackground } onPress={this.closeWishlistModal} >
+              <Icon name='ios-arrow-back-outline' style={ styles.goldText }/>
+            </Button>
+            <Form>
+              <Item last>
+                <Label>Select a Wishlist</Label>
+                <Picker
+                  selectedValue={this.state.wishlist}
+                  onValueChange={itemValue => this.setState({ wishlist: itemValue })}>
+                  {wishlists.map((wishlist, index) => (
+                    <Picker.Item key={index} label={wishlist} value={wishlist} />
+                  ))}
+                </Picker>
+              </Item>
+            </Form>
+          </Modal>
         </Content>
       </Container>
     );
