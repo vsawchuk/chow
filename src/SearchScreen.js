@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 import {
-  View,
   Text,
   Image,
-  TouchableHighlight,
 } from 'react-native';
-import styles from './styles.js';
+import { Container, Header, Item, Icon, Input, Button } from 'native-base';
+import styles from './styles';
 
 class SearchScreen extends Component {
   static navigationOptions = {
@@ -17,11 +16,18 @@ class SearchScreen extends Component {
     )
   }
   render() {
-    const { navigate } = this.props.navigation;
     return (
-      <View style={styles.search}>
-        <Text>Search Screen</Text>
-      </View>
+      <Container>
+        <Header style={styles.header} searchBar rounded>
+          <Item style={styles.greyBackground}>
+            <Icon name="ios-search" />
+            <Input placeholder="Search Restaurants" />
+          </Item>
+          <Button transparent>
+            <Text style={styles.greyText}>Search</Text>
+          </Button>
+        </Header>
+      </Container>
     );
   }
 }

@@ -25,15 +25,12 @@ const styles = StyleSheet.create({
   greyText: {
     color: GREY,
   },
+  greyBackground: {
+    backgroundColor: GREY,
+  },
   navIcon: {
     height: 30,
     width: 30,
-  },
-  flexContainer: {
-    alignItems: 'flex-end',
-    justifyContent: 'center',
-    flex: 1,
-    flexDirection: 'row',
   },
 });
 
