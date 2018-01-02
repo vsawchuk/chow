@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import {
   Text,
-  Image,
 } from 'react-native';
 import { Container, Header, Item, Icon, Input, Button } from 'native-base';
 import styles from './styles';
@@ -9,11 +8,8 @@ import styles from './styles';
 class SearchScreen extends Component {
   static navigationOptions = {
     tabBarIcon: ({ tintColor }) => (
-      <Image
-        source={require('../images/search-icon.png')}
-        style={styles.navIcon}
-      />
-    )
+      <Icon name="ios-search" style={[{ color: tintColor }]} />
+    ),
   }
   render() {
     return (

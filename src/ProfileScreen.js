@@ -8,7 +8,7 @@ import styles from './styles';
 class SearchScreen extends Component {
   static navigationOptions = {
     tabBarIcon: ({ tintColor }) => (
-      <Icon name="md-person" style={[{color: tintColor}]} />
+      <Icon name="md-person" style={[{ color: tintColor }]} />
     ),
   }
   render() {

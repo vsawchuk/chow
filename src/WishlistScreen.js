@@ -1,8 +1,5 @@
 import React, { Component } from 'react';
 import {
-  View,
-  Text,
-  Image,
   TouchableHighlight,
 } from 'react-native';
 import { Container, Header, Left, Body, Right, Button, Title, Icon } from 'native-base';
@@ -11,10 +8,7 @@ import styles from './styles';
 class WishlistScreen extends Component {
   static navigationOptions = {
     tabBarIcon: ({ tintColor }) => (
-      <Image
-        source={require('../images/wishlist-icon.png')}
-        style={styles.navIcon}
-      />
+      <Icon name='ios-list-box-outline' style={[{ color: tintColor }]} />
     )
   }
   render() {
