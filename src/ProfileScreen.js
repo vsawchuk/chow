@@ -1,19 +1,15 @@
 import React, { Component } from 'react';
 import {
   Text,
-  Image,
 } from 'react-native';
-import { Container, Header, Left, Body, Right, Button, Title } from 'native-base';
+import { Container, Header, Left, Body, Right, Button, Title, Icon } from 'native-base';
 import styles from './styles';
 
 class SearchScreen extends Component {
   static navigationOptions = {
-    tabBarIcon: () => (
-      <Image
-        source={require('../images/profile-icon.png')}
-        style={styles.navIcon}
-      />
-    )
+    tabBarIcon: ({ tintColor }) => (
+      <Icon name="md-person" style={[{color: tintColor}]} />
+    ),
   }
   render() {
     return (

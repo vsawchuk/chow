@@ -22,6 +22,9 @@ const styles = StyleSheet.create({
   header: {
     backgroundColor: GOLD,
   },
+  goldText: {
+    color: GOLD,
+  },
   greyText: {
     color: GREY,
   },
