@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import {
   Text,
 } from 'react-native';
-import { Container, Header, Item, Icon, Input, Button, Content } from 'native-base';
+import { Container, Header, Item, Icon, Input, Button, Content, List, ListItem, Body, Thumbnail } from 'native-base';
 import styles from './styles';
 
 const searchResults = {
@@ -292,13 +292,21 @@ class SearchScreen extends Component {
     })
   }
   renderResults(results) {
-    return results.map((result) => (
+    const formattedResults = results.map((result) => (
       this.renderResult(result)
     ));
+    return (
+      <List>{formattedResults}</List>
+    )
   }
   renderResult(result) {
     return (
-      <Text>{result.name}</Text>
+      <ListItem>
+        <Thumbnail square size={80} source={{ uri: result.image_url }} />
+        <Body>
+          <Text>{result.name}</Text>
+        </Body>
+      </ListItem>
     );
   }
   render() {
