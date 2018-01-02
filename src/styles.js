@@ -15,6 +15,10 @@ const styles = StyleSheet.create({
     backgroundColor: 'green',
     flex: 1,
   },
+  navIcon: {
+    height: 30,
+    width: 30,
+  },
 });
 
 module.exports = styles;

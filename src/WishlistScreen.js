@@ -12,6 +12,7 @@ class WishlistScreen extends Component {
     tabBarIcon: ({ tintColor }) => (
       <Image
         source={require('../images/wishlist-icon.png')}
+        style={styles.navIcon}
       />
     )
   }
@@ -19,10 +20,7 @@ class WishlistScreen extends Component {
     const { navigate } = this.props.navigation;
     return (
       <View style={styles.wishlist}>
-          <TouchableHighlight
-            onPress={() => navigate('ScreenTwo')}>
-            <Text>Go To Screen Two</Text>
-        </TouchableHighlight>
+        <Text>Wishlist Screen</Text>
       </View>
     );
   }

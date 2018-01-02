@@ -12,6 +12,7 @@ class SearchScreen extends Component {
     tabBarIcon: ({ tintColor }) => (
       <Image
         source={require('../images/search-icon.png')}
+        style={styles.navIcon}
       />
     )
   }
@@ -19,10 +20,7 @@ class SearchScreen extends Component {
     const { navigate } = this.props.navigation;
     return (
       <View style={styles.search}>
-          <TouchableHighlight
-            onPress={() => navigate('ScreenTwo')}>
-            <Text>Go To Screen Two</Text>
-        </TouchableHighlight>
+        <Text>Search Screen</Text>
       </View>
     );
   }
