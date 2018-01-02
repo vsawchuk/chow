@@ -1,6 +1,7 @@
 /*eslint-disable*/
 import React, { Component } from 'react';
 import {
+  Image,
   Text,
 } from 'react-native';
 import { Container, Header, Item, Icon, Input, Button, Content, List, ListItem, Body, Thumbnail } from 'native-base';
@@ -273,6 +274,20 @@ const searchResults = {
   ],
 }
 
+const ratingMap = {
+  0: require('../assets/yelp_stars/small/small_0.png'),
+  0.5: require('../assets/yelp_stars/small/small_0.png'),
+  1: require('../assets/yelp_stars/small/small_1.png'),
+  1.5: require('../assets/yelp_stars/small/small_1_half.png'),
+  2: require('../assets/yelp_stars/small/small_2.png'),
+  2.5: require('../assets/yelp_stars/small/small_2_half.png'),
+  3: require('../assets/yelp_stars/small/small_3.png'),
+  3.5: require('../assets/yelp_stars/small/small_3_half.png'),
+  4: require('../assets/yelp_stars/small/small_4.png'),
+  4.5: require('../assets/yelp_stars/small/small_4_half.png'),
+  5: require('../assets/yelp_stars/small/small_5.png'),
+}
+
 class SearchScreen extends Component {
   static navigationOptions = {
     tabBarIcon: ({ tintColor }) => (
@@ -300,14 +315,22 @@ class SearchScreen extends Component {
     )
   }
   renderResult(result) {
+    const formattedRating = this.renderRating(result.rating);
     return (
       <ListItem>
         <Thumbnail square size={80} source={{ uri: result.image_url }} />
         <Body>
           <Text>{result.name}</Text>
+          {formattedRating}
         </Body>
       </ListItem>
     );
+  }
+  renderRating(rating) {
+    const requireImage = ratingMap[rating];
+    return (
+      <Image source={requireImage} />
+    )
   }
   render() {
     let content;
@@ -315,8 +338,6 @@ class SearchScreen extends Component {
       const results = this.state.results;
       content = this.renderResults(results);
     }
-
-
     return (
       <Container>
         <Header style={styles.header} searchBar rounded>
