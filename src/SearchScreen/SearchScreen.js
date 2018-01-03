@@ -7,7 +7,9 @@ import {
   View,
 } from 'react-native';
 import { Container, Header, Item, Icon, Input, Button, Content, List, ListItem, Body, Thumbnail, Form, Label, Picker } from 'native-base';
-import styles from './styles';
+import styles from '../styles';
+import SearchHeader from './SearchScreenComponents/SearchHeader';
+import FullScreenModal from '../sharedComponents/FullScreenModal';
 
 const searchResults = {
   length: 10,
@@ -279,17 +281,17 @@ const searchResults = {
 const wishlists = ['My Wishlist', 'Seattle Wishlist', 'Going Home'];
 
 const ratingMap = {
-  0: require('../assets/yelp_stars/small/small_0.png'),
-  0.5: require('../assets/yelp_stars/small/small_0.png'),
-  1: require('../assets/yelp_stars/small/small_1.png'),
-  1.5: require('../assets/yelp_stars/small/small_1_half.png'),
-  2: require('../assets/yelp_stars/small/small_2.png'),
-  2.5: require('../assets/yelp_stars/small/small_2_half.png'),
-  3: require('../assets/yelp_stars/small/small_3.png'),
-  3.5: require('../assets/yelp_stars/small/small_3_half.png'),
-  4: require('../assets/yelp_stars/small/small_4.png'),
-  4.5: require('../assets/yelp_stars/small/small_4_half.png'),
-  5: require('../assets/yelp_stars/small/small_5.png'),
+  0: require('../../assets/yelp_stars/small/small_0.png'),
+  0.5: require('../../assets/yelp_stars/small/small_0.png'),
+  1: require('../../assets/yelp_stars/small/small_1.png'),
+  1.5: require('../../assets/yelp_stars/small/small_1_half.png'),
+  2: require('../../assets/yelp_stars/small/small_2.png'),
+  2.5: require('../../assets/yelp_stars/small/small_2_half.png'),
+  3: require('../../assets/yelp_stars/small/small_3.png'),
+  3.5: require('../../assets/yelp_stars/small/small_3_half.png'),
+  4: require('../../assets/yelp_stars/small/small_4.png'),
+  4.5: require('../../assets/yelp_stars/small/small_4_half.png'),
+  5: require('../../assets/yelp_stars/small/small_5.png'),
 };
 
 class SearchScreen extends Component {
@@ -349,7 +351,7 @@ class SearchScreen extends Component {
     return (
       <Text style={[{ flex: 4 }]}>
         <Image source={requireImage} />
-        <Image source={require('../assets/yelp_burst/Screen/Yelp_burst_positive_RGB.png')} style={styles.yelpBurst}/>
+        <Image source={require('../../assets/yelp_burst/Screen/Yelp_burst_positive_RGB.png')} style={styles.yelpBurst}/>
         <Text>{reviewCount}</Text>
       </Text>
     )
@@ -377,22 +379,10 @@ class SearchScreen extends Component {
     }
     return (
       <Container>
-        <Header style={styles.header} searchBar rounded>
-          <Item style={styles.greyBackground}>
-            <Icon name="ios-search" />
-            <Input placeholder="Search Restaurants" />
-          </Item>
-          <Button transparent onPress={this.getResults}>
-            <Text style={styles.greyText}>Search</Text>
-          </Button>
-        </Header>
+        <SearchHeader text="Search Restaurants" onSearch={this.getResults} />
         <Content>
           {content}
-          <Modal transparent={false} animationType="slide" visible={this.state.wishlistModalVisible} style={styles.greyBackground} >
-            <View style={{ height: 40 }} />
-            <Button style={styles.whiteBackground} onPress={this.closeWishlistModal} >
-              <Icon name="ios-arrow-back-outline" style={styles.goldText} />
-            </Button>
+          <FullScreenModal isVisible={this.state.wishlistModalVisible} closeModal={this.closeWishlistModal}>
             <Form>
               <Item last>
                 <Label>Select a Wishlist</Label>
@@ -409,7 +399,7 @@ class SearchScreen extends Component {
                 <Text style={styles.greyText}>Add to Wishlist</Text>
               </Button>
             </Form>
-          </Modal>
+          </FullScreenModal>
         </Content>
       </Container>
     );
