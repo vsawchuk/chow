@@ -6,7 +6,7 @@ import {
   Text,
   View,
 } from 'react-native';
-import { Container, Header, Item, Icon, Input, Button, Content, List, ListItem, Body, Thumbnail, Form, Label , Picker} from 'native-base';
+import { Container, Header, Item, Icon, Input, Button, Content, List, ListItem, Body, Thumbnail, Form, Label, Picker } from 'native-base';
 import styles from './styles';
 
 const searchResults = {
@@ -274,7 +274,7 @@ const searchResults = {
       },
     },
   ],
-}
+};
 
 const wishlists = ['My Wishlist', 'Seattle Wishlist', 'Going Home'];
 
@@ -290,7 +290,7 @@ const ratingMap = {
   4: require('../assets/yelp_stars/small/small_4.png'),
   4.5: require('../assets/yelp_stars/small/small_4_half.png'),
   5: require('../assets/yelp_stars/small/small_5.png'),
-}
+};
 
 class SearchScreen extends Component {
   static navigationOptions = {
@@ -312,7 +312,7 @@ class SearchScreen extends Component {
     this.closeWishlistModal = this.closeWishlistModal.bind(this);
   }
   getResults() {
-    this.setState((previousState) => {
+    this.setState(() => {
       return { results: searchResults.results };
     })
   }
@@ -322,7 +322,7 @@ class SearchScreen extends Component {
     ));
     return (
       <List>{formattedResults}</List>
-    )
+    );
   }
   renderResult(result) {
     const formattedRating = this.renderRating(result);
@@ -332,7 +332,7 @@ class SearchScreen extends Component {
         <Thumbnail square size={80} source={{ uri: result.image_url }} />
         <Body>
           <Text>{result.name}</Text>
-          <View flexDirection='row'>
+          <View flexDirection="row">
             {formattedRating}
             <Button icon transparent style={[{ flex: 1 }]} onPress={this.wishlistModalVisibility}>
               <Icon name="ios-add-circle" style={styles.goldText}/>
@@ -388,23 +388,24 @@ class SearchScreen extends Component {
         </Header>
         <Content>
           {content}
-          <Modal transparent={false} animationType='slide' visible={this.state.wishlistModalVisible} style={styles.greyBackground} >
+          <Modal transparent={false} animationType="slide" visible={this.state.wishlistModalVisible} style={styles.greyBackground} >
             <View style={{ height: 40 }} />
-            <Button style={ styles.whiteBackground } onPress={this.closeWishlistModal} >
-              <Icon name='ios-arrow-back-outline' style={ styles.goldText }/>
+            <Button style={styles.whiteBackground} onPress={this.closeWishlistModal} >
+              <Icon name="ios-arrow-back-outline" style={styles.goldText} />
             </Button>
             <Form>
               <Item last>
                 <Label>Select a Wishlist</Label>
                 <Picker
                   selectedValue={this.state.wishlist}
-                  onValueChange={itemValue => this.setState({ wishlist: itemValue })}>
+                  onValueChange={itemValue => this.setState({ wishlist: itemValue })}
+                >
                   {wishlists.map((wishlist, index) => (
                     <Picker.Item key={index} label={wishlist} value={wishlist} />
                   ))}
                 </Picker>
               </Item>
-              <Button style={[ styles.goldBackground, { alignSelf: 'center' }]}>
+              <Button style={[styles.goldBackground, { alignSelf: 'center' }]}>
                 <Text style={styles.greyText}>Add to Wishlist</Text>
               </Button>
             </Form>
