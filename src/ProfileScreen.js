@@ -21,6 +21,7 @@ class SearchScreen extends Component {
     };
     this.changeLogInStatus = this.changeLogInStatus.bind(this);
     this.logInModalVisibility = this.logInModalVisibility.bind(this);
+    this.logIn = this.logIn.bind(this);
   }
   changeLogInStatus() {
     this.setState((previousState) => {
@@ -29,6 +30,10 @@ class SearchScreen extends Component {
   }
   logInModalVisibility() {
     this.setState({ logInModalVisible: !this.state.logInModalVisible });
+  }
+  logIn() {
+    this.changeLogInStatus();
+    this.logInModalVisibility();
   }
   render() {
     let headerButton;
@@ -56,11 +61,20 @@ class SearchScreen extends Component {
             {headerButton}
           </Right>
         </Header>
-        <Modal transparent={false} animationType="slide" visible={this.state.logInModalVisible} style={styles.greyBackground} >
-          <View style={{ height: 40 }} />
-          <Button style={styles.whiteBackground} onPress={this.logInModalVisibility} >
-            <Icon name="ios-arrow-back-outline" style={styles.goldText} />
-          </Button>
+        <Modal transparent={true} animationType="slide" visible={this.state.logInModalVisible} >
+          <View style={{ height: 300 }} />
+          <View style={[styles.goldBackground, {height: 300, width: 300}]} >
+            <Button style={styles.whiteBackground} onPress={this.logInModalVisibility} >
+              <Icon name="ios-arrow-back-outline" style={styles.goldText} />
+            </Button>
+            <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
+              <View>
+                <Button onPress={this.logIn}>
+                  <Text>Log in with Google</Text>
+                </Button>
+              </View>
+            </View>
+          </View>
         </Modal>
       </Container>
     );
