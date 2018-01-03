@@ -325,8 +325,8 @@ class SearchScreen extends Component {
     )
   }
   renderResult(result) {
-    // TODO: format display address properly based on length of display_address array
     const formattedRating = this.renderRating(result);
+    const formattedAddress = this.renderAddress(result);
     return (
       <ListItem>
         <Thumbnail square size={80} source={{ uri: result.image_url }} />
@@ -338,7 +338,7 @@ class SearchScreen extends Component {
               <Icon name="ios-add-circle" style={styles.goldText}/>
             </Button>
           </View>
-          <Text>{result.location.display_address}</Text>
+          {formattedAddress}
         </Body>
       </ListItem>
     );
@@ -353,6 +353,12 @@ class SearchScreen extends Component {
         <Text>{reviewCount}</Text>
       </Text>
     )
+  }
+  renderAddress(result) {
+    const addressComponents = result.location.display_address.map((addressItem) => (
+      <Text>{addressItem}</Text>
+    ));
+    return addressComponents;
   }
   wishlistModalVisibility() {
     this.setState((previousState) => {
