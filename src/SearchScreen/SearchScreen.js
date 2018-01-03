@@ -9,6 +9,7 @@ import {
 import { Container, Header, Item, Icon, Input, Button, Content, List, ListItem, Body, Thumbnail, Form, Label, Picker } from 'native-base';
 import styles from '../styles';
 import SearchHeader from './SearchScreenComponents/SearchHeader';
+import AddToWishlistForm from './SearchScreenComponents/AddToWishlistForm';
 import FullScreenModal from '../sharedComponents/FullScreenModal';
 
 const searchResults = {
@@ -312,6 +313,7 @@ class SearchScreen extends Component {
     this.renderResult = this.renderResult.bind(this);
     this.wishlistModalVisibility = this.wishlistModalVisibility.bind(this);
     this.closeWishlistModal = this.closeWishlistModal.bind(this);
+    this.setWishlist = this.setWishlist.bind(this);
   }
   getResults() {
     this.setState(() => {
@@ -367,6 +369,9 @@ class SearchScreen extends Component {
       return { wishlistModalVisible: !previousState.wishlistModalVisible };
     });
   }
+  setWishlist(newWishlist) {
+    this.setState({ wishlist: newWishlist });
+  }
   closeWishlistModal() {
     this.wishlistModalVisibility();
     this.setState({ wishlist: wishlists[0] });
@@ -383,22 +388,7 @@ class SearchScreen extends Component {
         <Content>
           {content}
           <FullScreenModal isVisible={this.state.wishlistModalVisible} closeModal={this.closeWishlistModal}>
-            <Form>
-              <Item last>
-                <Label>Select a Wishlist</Label>
-                <Picker
-                  selectedValue={this.state.wishlist}
-                  onValueChange={itemValue => this.setState({ wishlist: itemValue })}
-                >
-                  {wishlists.map((wishlist, index) => (
-                    <Picker.Item key={index} label={wishlist} value={wishlist} />
-                  ))}
-                </Picker>
-              </Item>
-              <Button style={[styles.goldBackground, { alignSelf: 'center' }]}>
-                <Text style={styles.greyText}>Add to Wishlist</Text>
-              </Button>
-            </Form>
+            <AddToWishlistForm currentWishlist={this.state.wishlist} wishlists={wishlists} onValueChange={this.setWishlist}/>
           </FullScreenModal>
         </Content>
       </Container>
