@@ -1,6 +1,8 @@
 import { combineReducers } from 'redux';
-import WishlistsReducer from './WishlistsReducer'
+import UserReducer from './UserReducer';
+import WishlistsReducer from './WishlistsReducer';
 
 export default combineReducers({
+  user: UserReducer,
   wishlists: WishlistsReducer,
 });

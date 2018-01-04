@@ -1,8 +1,15 @@
 import React, { Component } from 'react';
 import { Modal, Text, View } from 'react-native';
 import { Container, Button, Icon } from 'native-base';
+import { connect } from 'react-redux';
+import * as actions from '../actions';
 import styles from '../styles';
 import HeaderWithRightButton from '../sharedComponents/HeaderWithRightButton';
+
+const FAKEUSER = {
+  id: 1,
+  username: 'victoria',
+}
 
 class ProfileScreen extends Component {
   static navigationOptions = {
@@ -13,28 +20,23 @@ class ProfileScreen extends Component {
   constructor() {
     super();
     this.state = {
-      loggedIn: false,
       logInModalVisible: false,
     };
-    this.changeLogInStatus = this.changeLogInStatus.bind(this);
     this.logInModalVisibility = this.logInModalVisibility.bind(this);
     this.logIn = this.logIn.bind(this);
-  }
-  changeLogInStatus() {
-    this.setState({ loggedIn: !this.state.loggedIn });
   }
   logInModalVisibility() {
     this.setState({ logInModalVisible: !this.state.logInModalVisible });
   }
   logIn() {
-    this.changeLogInStatus();
+    this.props.loginUser(FAKEUSER);
     this.logInModalVisibility();
   }
   render() {
     let headerButton;
-    if (this.state.loggedIn) {
+    if (this.props.loggedIn) {
       headerButton = (
-        <Button transparent onPress={this.changeLogInStatus}>
+        <Button transparent onPress={() => this.props.logoutUser()}>
           <Text style={styles.greyText}>Log Out</Text>
         </Button>
       );
@@ -68,4 +70,9 @@ class ProfileScreen extends Component {
   }
 }
 
-module.exports = ProfileScreen;
+const mapStateToProps = (state, ownProps) => {
+  const loggedIn = Object.keys(state.user).length > 0;
+  return { loggedIn };
+};
+
+export default connect(mapStateToProps, actions)(ProfileScreen);

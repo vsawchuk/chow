@@ -17,7 +17,9 @@ const AppNavigator = TabNavigator({
   },
 });
 
-const AppWithNavigationState = () => (<AppNavigator />);
+const AppWithNavigationState = ({ state, dispatch }) => (
+  <AppNavigator state={state} dispatch={dispatch} />
+);
 
 const mapStateToProps = state => ({
   state,
