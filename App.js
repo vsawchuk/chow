@@ -3,7 +3,7 @@ import React from 'react';
 
 import { TabNavigator } from 'react-navigation';
 import SearchScreen from './src/SearchScreen/SearchScreen';
-import ProfileScreen from './src/ProfileScreen';
+import ProfileScreen from './src/ProfileScreen/ProfileScreen';
 import WishlistScreen from './src/WishlistScreen';
 
 const GOLD = '#F9A602';
