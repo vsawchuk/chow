@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { Modal, Text, View } from 'react-native';
-import { Container, Header, Left, Body, Right, Button, Title, Icon } from 'native-base';
+import { Container, Button, Icon } from 'native-base';
 import styles from '../styles';
+import HeaderWithRightButton from '../sharedComponents/HeaderWithRightButton';
 
 class ProfileScreen extends Component {
   static navigationOptions = {
@@ -46,15 +47,7 @@ class ProfileScreen extends Component {
     }
     return (
       <Container>
-        <Header style={styles.header}>
-          <Left />
-          <Body>
-            <Title style={styles.greyText}>Profile</Title>
-          </Body>
-          <Right>
-            {headerButton}
-          </Right>
-        </Header>
+        <HeaderWithRightButton title='Profile' headerButton={headerButton} />
         <Modal transparent animationType="slide" visible={this.state.logInModalVisible} >
           <View style={{ height: 300 }} />
           <View style={[styles.goldBackground, { height: 300, width: 300 }]} >
