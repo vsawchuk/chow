@@ -5,6 +5,7 @@ import WishlistListItem from './WishlistListItem';
 const WishlistList = ({ list }) => {
   const wishlists = list.map(wishlist => (
     <WishlistListItem
+      key={wishlist.id}
       wishlist={wishlist}
     />
   ));
