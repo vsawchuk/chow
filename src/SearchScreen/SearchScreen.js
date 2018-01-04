@@ -21,21 +21,24 @@ class SearchScreen extends Component {
       results: [],
       wishlistModalVisible: false,
       wishlist: wishlists[0],
+      searchTerm: null,
+      searchLocation: null,
     };
     this.getResults = this.getResults.bind(this);
     this.wishlistModalVisibility = this.wishlistModalVisibility.bind(this);
     this.closeWishlistModal = this.closeWishlistModal.bind(this);
     this.setWishlist = this.setWishlist.bind(this);
+    this.restaurantOnChange = this.restaurantOnChange.bind(this);
+    this.locationOnChange = this.locationOnChange.bind(this);
   }
   getResults() {
-    // TODO: scrape searchTerm and searchLocation from form (probably in separate function before searching)
-    const searchTerm = 'pizza';
-    const searchLocation = 'Virginia Beach';
+    const requestURL = `https://api.yelp.com/v3/businesses/search?term=${this.state.searchTerm}&location=${this.state.searchLocation}&limit=50`;
     const config = {
-      headers: { Authorization: `Bearer ${YELP_API_KEY}`}
-    }
-    // TODO: add scrolling that will dynamically give the offset variable for the get request (scrolling pagination)
-    axios.get(`https://api.yelp.com/v3/businesses/search?term=${searchTerm}&location=${searchLocation}&limit=50`, config)
+      headers: { Authorization: `Bearer ${YELP_API_KEY}` },
+    };
+    // TODO: add scrolling that will dynamically give
+    // offset variable for the get request (scrolling pagination)
+    axios.get(requestURL, config)
       .then(response => this.setState({ results: response.data.businesses }));
   }
   setWishlist(newWishlist) {
@@ -50,10 +53,20 @@ class SearchScreen extends Component {
     this.wishlistModalVisibility();
     this.setState({ wishlist: wishlists[0] });
   }
+  restaurantOnChange(newRestaurant) {
+    this.setState({ searchTerm: newRestaurant });
+  }
+  locationOnChange(newLocation) {
+    this.setState({ searchLocation: newLocation });
+  }
   render() {
     return (
       <Container>
-        <SearchHeader text="Search Restaurants" onSearch={this.getResults} />
+        <SearchHeader
+          onSearch={this.getResults}
+          restaurantOnChange={this.restaurantOnChange}
+          locationOnChange={this.locationOnChange}
+        />
         <Content>
           <RestaurantList
             list={this.state.results}
