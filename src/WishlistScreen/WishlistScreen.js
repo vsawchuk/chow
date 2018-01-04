@@ -10,14 +10,14 @@ class WishlistScreen extends Component {
     ),
   }
   render() {
-    const button = (
+    const headerButton = (
       <Button transparent>
         <Icon style={styles.greyText} name="ios-add-circle-outline" />
       </Button>
     );
     return (
       <Container>
-        <HeaderWithRightButton title="Wishlists" headerButton={button} />
+        <HeaderWithRightButton title="Wishlists" headerButton={headerButton} />
       </Container>
     );
   }
