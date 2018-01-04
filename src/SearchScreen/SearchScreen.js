@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-// import ReactNative from 'react-native';
 import { Container, Icon, Content } from 'native-base';
 import SearchHeader from './SearchScreenComponents/SearchHeader';
 import AddToWishlistForm from './SearchScreenComponents/AddToWishlistForm';

@@ -5,8 +5,7 @@ import styles from '../styles';
 import YelpRating from './YelpRating';
 import FormattedAddress from './FormattedAddress';
 
-const RestaurantListItem = ( {restaurant, hasAddButton, addButtonOnPress} ) => {
-  // const formattedAddress = this.renderAddress(result);
+const RestaurantListItem = ({ restaurant, hasAddButton, addButtonOnPress }) => {
   let button;
   if (hasAddButton) {
     button = (
