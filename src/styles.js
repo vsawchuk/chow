@@ -41,6 +41,12 @@ const styles = StyleSheet.create({
     height: 30,
     width: 30,
   },
+  centeredRowContainer: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
 });
 
 module.exports = styles;

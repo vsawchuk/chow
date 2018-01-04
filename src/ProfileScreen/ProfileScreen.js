@@ -3,7 +3,7 @@ import { Modal, Text, View } from 'react-native';
 import { Container, Header, Left, Body, Right, Button, Title, Icon } from 'native-base';
 import styles from '../styles';
 
-class SearchScreen extends Component {
+class ProfileScreen extends Component {
   static navigationOptions = {
     tabBarIcon: ({ tintColor }) => (
       <Icon name="md-person" style={[{ color: tintColor }]} />
@@ -61,7 +61,7 @@ class SearchScreen extends Component {
             <Button style={styles.whiteBackground} onPress={this.logInModalVisibility} >
               <Icon name="ios-arrow-back-outline" style={styles.goldText} />
             </Button>
-            <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
+            <View style={styles.centeredRowContainer}>
               <View>
                 <Button onPress={this.logIn}>
                   <Text>Log in with Google</Text>
@@ -75,4 +75,4 @@ class SearchScreen extends Component {
   }
 }
 
-module.exports = SearchScreen;
+module.exports = ProfileScreen;
