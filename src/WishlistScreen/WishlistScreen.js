@@ -3,7 +3,7 @@ import {
   TouchableHighlight,
 } from 'react-native';
 import { Container, Header, Left, Body, Right, Button, Title, Icon } from 'native-base';
-import styles from './styles';
+import styles from '../styles';
 
 class WishlistScreen extends Component {
   static navigationOptions = {
