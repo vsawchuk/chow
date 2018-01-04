@@ -24,9 +24,7 @@ class SearchScreen extends Component {
     this.logIn = this.logIn.bind(this);
   }
   changeLogInStatus() {
-    this.setState((previousState) => {
-      return { loggedIn: !previousState.loggedIn };
-    });
+    this.setState({ loggedIn: !this.state.loggedIn });
   }
   logInModalVisibility() {
     this.setState({ logInModalVisible: !this.state.logInModalVisible });
