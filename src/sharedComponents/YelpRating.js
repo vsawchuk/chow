@@ -1,5 +1,6 @@
 import React from 'react';
-import { Text, Image } from 'react-native';
+import { Text, Image, Linking } from 'react-native';
+import { Button } from 'native-base';
 import styles from '../styles';
 
 const ratingMap = {
@@ -20,9 +21,8 @@ const YelpRating = ({ restaurant }) => {
   const requireImage = ratingMap[restaurant.rating];
   const reviewCount = `${restaurant.review_count} Reviews`;
   return (
-    <Text style={[{ flex: 4 }]}>
+    <Text>
       <Image source={requireImage} />
-      <Image source={require('../../assets/yelp_burst/Screen/Yelp_burst_positive_RGB.png')} style={styles.yelpBurst} />
       <Text>{reviewCount}</Text>
     </Text>
   );

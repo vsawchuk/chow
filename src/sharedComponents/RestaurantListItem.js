@@ -1,14 +1,14 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, Linking, Image } from 'react-native';
 import { Icon, ListItem, Body, Thumbnail, Button } from 'native-base';
 import styles from '../styles';
 import YelpRating from './YelpRating';
 import FormattedAddress from './FormattedAddress';
 
 const RestaurantListItem = ({ restaurant, hasAddButton, addButtonOnPress }) => {
-  let button;
+  let addButton;
   if (hasAddButton) {
-    button = (
+    addButton = (
       <Button icon transparent style={[{ flex: 1 }]} onPress={addButtonOnPress}>
         <Icon name="ios-add-circle" style={styles.goldText} />
       </Button>
@@ -18,12 +18,20 @@ const RestaurantListItem = ({ restaurant, hasAddButton, addButtonOnPress }) => {
     <ListItem>
       <Thumbnail square size={80} source={{ uri: restaurant.image_url }} />
       <Body>
-        <Text>{restaurant.name}</Text>
-        <View flexDirection="row">
-          <YelpRating restaurant={restaurant} />
-          {button}
+        <View flexDirection="row" justifyContent="space-between" style={{paddingLeft: 10}}>
+          <View flexDirection="column" justifyContent="space-around">
+            <Text>{restaurant.name}</Text>
+            <YelpRating restaurant={restaurant} />
+            <FormattedAddress addressArray={restaurant.location.display_address} />
+          </View>
+          <View flexDirection="column" justifyContent="space-around">
+            <Text>{restaurant.price}</Text>
+            {addButton}
+            <Button transparent onPress={() => Linking.openURL(restaurant.url)} style={styles.yelpBurst}>
+              <Image source={require('../../assets/yelp_burst/Screen/Yelp_burst_positive_RGB.png')} style={styles.yelpBurst} />
+            </Button>
+          </View>
         </View>
-        <FormattedAddress addressArray={restaurant.location.display_address} />
       </Body>
     </ListItem>
   );

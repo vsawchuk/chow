@@ -32,6 +32,10 @@ class SearchScreen extends Component {
     this.locationOnChange = this.locationOnChange.bind(this);
   }
   getResults() {
+    // TODO: remove when finished with searchView
+    if (this.state.searchTerm === null) {
+      this.setState({ searchTerm: 'Pizza', searchLocation: 'Virginia Beach' });
+    }
     const requestURL = `https://api.yelp.com/v3/businesses/search?term=${this.state.searchTerm}&location=${this.state.searchLocation}&limit=50`;
     const config = {
       headers: { Authorization: `Bearer ${YELP_API_KEY}` },
@@ -45,9 +49,7 @@ class SearchScreen extends Component {
     this.setState({ wishlist: newWishlist });
   }
   wishlistModalVisibility() {
-    this.setState((previousState) => {
-      return { wishlistModalVisible: !previousState.wishlistModalVisible };
-    });
+    this.setState({ wishlistModalVisible: !this.state.wishlistModalVisible });
   }
   closeWishlistModal() {
     this.wishlistModalVisibility();
