@@ -12,7 +12,7 @@ const AddToWishlistForm = ({ currentWishlist, wishlists, onValueChange }) => (
         onValueChange={onValueChange}
       >
         {wishlists.map(wishlist => (
-          <Picker.Item key={wishlist} label={wishlist} value={wishlist} />
+          <Picker.Item key={wishlist.id} label={wishlist.name} value={wishlist} />
         ))}
       </Picker>
     </Item>

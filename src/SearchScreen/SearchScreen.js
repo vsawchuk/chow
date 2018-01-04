@@ -7,7 +7,21 @@ import AddToWishlistForm from './SearchScreenComponents/AddToWishlistForm';
 import FullScreenModal from '../sharedComponents/FullScreenModal';
 import RestaurantList from '../sharedComponents/RestaurantList';
 
-const wishlists = ['My Wishlist', 'Seattle Wishlist', 'Going Home'];
+// TODO: remove static wishlists and use a get request to the API to get a user's wishlists
+const wishlists = [
+  {
+    "id": 1,
+    "name": "My Wishlist"
+  },
+  {
+    "id": 2,
+    "name": "Seattle Wishlist",
+  },
+  {
+    "id": 3,
+    "name": "Going Home",
+  },
+];
 
 class SearchScreen extends Component {
   static navigationOptions = {
