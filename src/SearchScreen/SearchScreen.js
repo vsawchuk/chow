@@ -34,7 +34,8 @@ class SearchScreen extends Component {
     const config = {
       headers: { Authorization: `Bearer ${YELP_API_KEY}`}
     }
-    axios.get(`https://api.yelp.com/v3/businesses/search?term=${searchTerm}&location=${searchLocation}`, config)
+    // TODO: add scrolling that will dynamically give the offset variable for the get request (scrolling pagination)
+    axios.get(`https://api.yelp.com/v3/businesses/search?term=${searchTerm}&location=${searchLocation}&limit=50`, config)
       .then(response => this.setState({ results: response.data.businesses }));
   }
   setWishlist(newWishlist) {
