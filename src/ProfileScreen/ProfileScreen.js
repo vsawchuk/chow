@@ -1,9 +1,5 @@
 import React, { Component } from 'react';
-import {
-  Modal,
-  Text,
-  View,
-} from 'react-native';
+import { Modal, Text, View } from 'react-native';
 import { Container, Header, Left, Body, Right, Button, Title, Icon } from 'native-base';
 import styles from '../styles';
 
@@ -59,9 +55,9 @@ class SearchScreen extends Component {
             {headerButton}
           </Right>
         </Header>
-        <Modal transparent={true} animationType="slide" visible={this.state.logInModalVisible} >
+        <Modal transparent animationType="slide" visible={this.state.logInModalVisible} >
           <View style={{ height: 300 }} />
-          <View style={[styles.goldBackground, {height: 300, width: 300}]} >
+          <View style={[styles.goldBackground, { height: 300, width: 300 }]} >
             <Button style={styles.whiteBackground} onPress={this.logInModalVisibility} >
               <Icon name="ios-arrow-back-outline" style={styles.goldText} />
             </Button>
