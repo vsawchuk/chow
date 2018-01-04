@@ -18,7 +18,7 @@ const RestaurantListItem = ({ restaurant, hasAddButton, addButtonOnPress }) => {
     <ListItem>
       <Thumbnail square size={80} source={{ uri: restaurant.image_url }} />
       <Body>
-        <View flexDirection="row" justifyContent="space-between" style={{paddingLeft: 10}}>
+        <View flexDirection="row" justifyContent="space-between" style={{ paddingLeft: 10 }}>
           <View flexDirection="column" justifyContent="space-around">
             <Text>{restaurant.name}</Text>
             <YelpRating restaurant={restaurant} />
@@ -27,7 +27,11 @@ const RestaurantListItem = ({ restaurant, hasAddButton, addButtonOnPress }) => {
           <View flexDirection="column" justifyContent="space-around">
             <Text>{restaurant.price}</Text>
             {addButton}
-            <Button transparent onPress={() => Linking.openURL(restaurant.url)} style={styles.yelpBurst}>
+            <Button
+              transparent
+              onPress={() => Linking.openURL(restaurant.url)}
+              style={styles.yelpBurst}
+            >
               <Image source={require('../../assets/yelp_burst/Screen/Yelp_burst_positive_RGB.png')} style={styles.yelpBurst} />
             </Button>
           </View>
