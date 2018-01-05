@@ -7,6 +7,7 @@ import { GOOGLE_OAUTH_IOS_CLIENT_ID } from 'react-native-dotenv';
 import * as actions from '../actions';
 import styles from '../styles';
 import HeaderWithRightButton from '../sharedComponents/HeaderWithRightButton';
+import UserProfile from './ProfileScreenComponents/UserProfile';
 import { FAKEUSER_AUTH_RESPONSE } from '../FakeData/FakeUser.js';
 
 class ProfileScreen extends Component {
@@ -50,15 +51,15 @@ class ProfileScreen extends Component {
   }
   render() {
     let headerButton;
-    let userProfile;
+    let content;
     if (this.props.loggedIn) {
       headerButton = (
         <Button transparent onPress={() => this.props.logoutUser()}>
           <Text style={styles.greyText}>Log Out</Text>
         </Button>
       );
-      userProfile = (
-        <Text>{this.props.user.name}</Text>
+      content = (
+        <UserProfile user={this.props.user} />
       );
     } else {
       headerButton = (
@@ -70,7 +71,7 @@ class ProfileScreen extends Component {
     return (
       <Container>
         <HeaderWithRightButton title='Profile' headerButton={headerButton} />
-        {userProfile}
+        {content}
         <Modal transparent animationType="slide" visible={this.state.logInModalVisible} >
           <View style={{ height: 300 }} />
           <View style={[styles.goldBackground, { height: 300, width: 300 }]} >

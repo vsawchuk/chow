@@ -47,6 +47,21 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
+  centeredColumnContainer: {
+    flex: 1,
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  userImage: {
+    height: 200,
+    width: 200,
+    borderRadius: 100,
+  },
+  username: {
+    fontSize: 20,
+    paddingTop: 20,
+  },
 });
 
 module.exports = styles;
