@@ -2,14 +2,12 @@ import React, { Component } from 'react';
 import { Modal, Text, View } from 'react-native';
 import { Container, Button, Icon } from 'native-base';
 import { connect } from 'react-redux';
+import Expo from 'expo';
+import { GOOGLE_OAUTH_IOS_CLIENT_ID } from 'react-native-dotenv';
 import * as actions from '../actions';
 import styles from '../styles';
 import HeaderWithRightButton from '../sharedComponents/HeaderWithRightButton';
-
-const FAKEUSER = {
-  id: 1,
-  username: 'victoria',
-}
+import { FAKEUSER_AUTH_RESPONSE } from '../FakeData/FakeUser.js';
 
 class ProfileScreen extends Component {
   static navigationOptions = {
@@ -28,17 +26,39 @@ class ProfileScreen extends Component {
   logInModalVisibility() {
     this.setState({ logInModalVisible: !this.state.logInModalVisible });
   }
+  // TODO: uncomment this version of logIn after development, use real auth
+  // async logIn() {
+  //   try {
+  //     const result = await Expo.Google.logInAsync({
+  //       iosClientId: GOOGLE_OAUTH_IOS_CLIENT_ID,
+  //       scopes: ['profile', 'email'],
+  //     });
+  //     if (result && result.type === 'success') {
+  //       this.props.loginUser(result.user);
+  //       this.logInModalVisibility();
+  //       return result.accessToken;
+  //     } else {
+  //       throw Error();
+  //     }
+  //   } catch (e) {
+  //     return { error: true };
+  //   }
+  // }
   logIn() {
-    this.props.loginUser(FAKEUSER);
+    this.props.loginUser(FAKEUSER_AUTH_RESPONSE.user);
     this.logInModalVisibility();
   }
   render() {
     let headerButton;
+    let userProfile;
     if (this.props.loggedIn) {
       headerButton = (
         <Button transparent onPress={() => this.props.logoutUser()}>
           <Text style={styles.greyText}>Log Out</Text>
         </Button>
+      );
+      userProfile = (
+        <Text>{this.props.user.name}</Text>
       );
     } else {
       headerButton = (
@@ -50,6 +70,7 @@ class ProfileScreen extends Component {
     return (
       <Container>
         <HeaderWithRightButton title='Profile' headerButton={headerButton} />
+        {userProfile}
         <Modal transparent animationType="slide" visible={this.state.logInModalVisible} >
           <View style={{ height: 300 }} />
           <View style={[styles.goldBackground, { height: 300, width: 300 }]} >
@@ -72,7 +93,7 @@ class ProfileScreen extends Component {
 
 const mapStateToProps = (state, ownProps) => {
   const loggedIn = Object.keys(state.user).length > 0;
-  return { loggedIn };
+  return { loggedIn, user: state.user };
 };
 
 export default connect(mapStateToProps, actions)(ProfileScreen);
