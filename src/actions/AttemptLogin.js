@@ -1,28 +1,20 @@
-import axios from 'axios';
-import { LOCAL_IP } from 'react-native-dotenv';
-import { loginUser } from './LoginUser';
-import { getWishlists } from './GetWishlists';
+import Expo from 'expo';
+import { GOOGLE_OAUTH_IOS_CLIENT_ID} from 'react-native-dotenv';
+import { confirmLogin } from './ConfirmLogin';
+import { closeLoginModal } from './CloseLoginModal';
 
-axios.defaults.baseURL = `http://${LOCAL_IP}`;
-
-export const attemptLogin = (googleResponse) => {
-  const user = {
-    username: googleResponse.user.name,
-    email: googleResponse.user.email,
-    googleId: googleResponse.user.id,
-    photoUrl: googleResponse.user.photoUrl,
-  };
+export const attemptLogin = () => {
   return (dispatch) => {
-    axios.post('/users', user)
-      .then((response) => {
-        dispatch(loginUser(response.data));
-        // TODO: replace static ID with user's ID
-        // dispatch(getWishlists(response.data.id));
-        dispatch(getWishlists(1));
+    Expo.Google.logInAsync({
+      iosClientId: GOOGLE_OAUTH_IOS_CLIENT_ID,
+      scopes: ['profile', 'email'],
+    })
+      .then((googleResponse) => {
+        dispatch(confirmLogin(googleResponse));
+        dispatch(closeLoginModal());
       })
       .catch((error) => {
-        console.log('got an error :(');
-        console.log(error);
+        console.log('ERROR GOOGLE LOGIN');
       });
   };
 };

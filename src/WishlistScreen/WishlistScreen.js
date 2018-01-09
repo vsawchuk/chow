@@ -13,7 +13,6 @@ class WishlistScreen extends Component {
     ),
   }
   render() {
-    console.log(this.props);
     const headerButton = (
       <Button transparent>
         <Icon style={styles.greyText} name="ios-add-circle-outline" />

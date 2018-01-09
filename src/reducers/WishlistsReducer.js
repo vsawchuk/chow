@@ -1,4 +1,3 @@
-//TODO: Move into actions and reducers using the API
 export default (state = [], action) => {
   switch (action.type) {
     case 'load_wishlists':
