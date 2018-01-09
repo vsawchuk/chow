@@ -8,7 +8,6 @@ import * as actions from '../actions';
 import styles from '../styles';
 import HeaderWithRightButton from '../sharedComponents/HeaderWithRightButton';
 import UserProfile from './ProfileScreenComponents/UserProfile';
-import { FAKEUSER_AUTH_RESPONSE } from '../FakeData/FakeUser.js';
 
 class ProfileScreen extends Component {
   static navigationOptions = {
