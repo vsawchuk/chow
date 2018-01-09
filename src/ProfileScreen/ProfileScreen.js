@@ -54,7 +54,7 @@ class ProfileScreen extends Component {
     let content;
     if (this.props.loggedIn) {
       headerButton = (
-        <Button transparent onPress={() => this.props.logoutUser()}>
+        <Button transparent onPress={() => this.props.logoutActions()}>
           <Text style={styles.greyText}>Log Out</Text>
         </Button>
       );

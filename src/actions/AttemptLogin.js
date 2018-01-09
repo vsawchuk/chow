@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { LOCAL_IP } from 'react-native-dotenv';
 import { loginUser } from './LoginUser';
+import { getWishlists } from './GetWishlists';
 
 axios.defaults.baseURL = `http://${LOCAL_IP}`;
 
@@ -14,8 +15,10 @@ export const attemptLogin = (googleResponse) => {
   return (dispatch) => {
     axios.post('/users', user)
       .then((response) => {
-        console.log(response);
         dispatch(loginUser(response.data));
+        // TODO: replace static ID with user's ID
+        // dispatch(getWishlists(response.data.id));
+        dispatch(getWishlists(1));
       })
       .catch((error) => {
         console.log('got an error :(');
