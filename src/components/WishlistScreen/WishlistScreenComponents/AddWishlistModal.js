@@ -1,19 +1,40 @@
-import React from 'react';
-import { Modal, Text, View } from 'react-native';
-import { Button, Icon } from 'native-base';
+import React, { Component } from 'react';
+import { Text } from 'react-native';
+import { Button, Form, Item, Label, Input } from 'native-base';
 import { connect } from 'react-redux';
 import * as actions from '../../../actions';
 import styles from '../../../styles';
 import FullScreenModal from '../../sharedComponents/FullScreenModal';
 
-const AddWishlistModal = (props) => {
-  return (
-    <FullScreenModal
-      isVisible={props.addWishlistModalVisible}
-      closeModal={props.closeAddWishlistModal}
-    />
-  );
-};
+class AddWishlistModal extends Component {
+  constructor(props) {
+    super();
+    this.props = props;
+    this.state = { textInput: '' };
+    this.changeTextInput = this.changeTextInput.bind(this);
+  }
+  changeTextInput(newValue) {
+    this.setState({ textInput: newValue });
+  }
+  render() {
+    return (
+      <FullScreenModal
+        isVisible={this.props.addWishlistModalVisible}
+        closeModal={this.props.closeAddWishlistModal}
+      >
+        <Form>
+          <Item floatingLabel last>
+            <Label>Wishlist Name</Label>
+            <Input onChangeText={this.changeTextInput} />
+          </Item>
+          <Button style={[styles.goldBackground, { alignSelf: 'center' }]}>
+            <Text style={styles.greyText}>Create Wishlist</Text>
+          </Button>
+        </Form>
+      </FullScreenModal>
+    );
+  }
+}
 
 const mapStateToProps = (state, ownProps) => {
   return { addWishlistModalVisible: state.addWishlistModalVisible };

@@ -14,7 +14,9 @@ const WishlistScreenHeaderButton = (props) => {
 };
 
 const mapStateToProps = (state, ownProps) => {
-  const loggedIn = Object.keys(state.user).length > 0;
+  // TODO: uncomment line below once done with AddWishlistModal
+  // const loggedIn = Object.keys(state.user).length > 0;
+  const loggedIn = true;
   return { loggedIn };
 };
 

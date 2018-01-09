@@ -28,8 +28,7 @@ class WishlistScreen extends Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-  const loggedIn = Object.keys(state.user).length > 0;
-  return { loggedIn, wishlists: state.wishlists };
+  return { wishlists: state.wishlists };
 };
 
 export default connect(mapStateToProps, actions)(WishlistScreen);
