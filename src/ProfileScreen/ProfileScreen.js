@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
-import { Modal, Text, View } from 'react-native';
+import { Text } from 'react-native';
 import { Container, Button, Icon } from 'native-base';
 import { connect } from 'react-redux';
-import Expo from 'expo';
-import { GOOGLE_OAUTH_IOS_CLIENT_ID } from 'react-native-dotenv';
 import * as actions from '../actions';
 import styles from '../styles';
 import HeaderWithRightButton from '../sharedComponents/HeaderWithRightButton';
