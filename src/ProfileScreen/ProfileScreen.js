@@ -27,7 +27,6 @@ class ProfileScreen extends Component {
   logInModalVisibility() {
     this.setState({ logInModalVisible: !this.state.logInModalVisible });
   }
-  // TODO: uncomment this version of logIn after development, use real auth
   async logIn() {
     try {
       const result = await Expo.Google.logInAsync({
@@ -45,10 +44,6 @@ class ProfileScreen extends Component {
       return { error: true };
     }
   }
-  // logIn() {
-  //   this.props.loginUser(FAKEUSER_AUTH_RESPONSE.user);
-  //   this.logInModalVisibility();
-  // }
   render() {
     let headerButton;
     let content;
