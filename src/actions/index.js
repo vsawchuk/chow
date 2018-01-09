@@ -8,3 +8,5 @@ export * from './AttemptLogin';
 export * from './GetWishlists';
 export * from './CloseLoginModal';
 export * from './DisplayLoginModal';
+export * from './CloseAddWishlistModal';
+export * from './DisplayAddWishlistModal';

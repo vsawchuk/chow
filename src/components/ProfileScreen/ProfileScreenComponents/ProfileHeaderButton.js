@@ -6,7 +6,6 @@ import * as actions from '../../../actions';
 import styles from '../../../styles';
 
 const ProfileHeaderButton = (props) => {
-  console.log(props);
   let text;
   let onPress;
   if (props.loggedIn) {

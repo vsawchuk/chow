@@ -7,7 +7,7 @@ import styles from '../../../styles';
 const WishlistScreenHeaderButton = (props) => {
   let onPress;
   if (props.loggedIn) {
-    // onPress = props.displayAddWishlistModal;
+    onPress = props.displayAddWishlistModal;
   } else {
     onPress = props.displayLoginModal;
   }
