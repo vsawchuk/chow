@@ -14,7 +14,7 @@ export const attemptLogin = (googleResponse) => {
   return (dispatch) => {
     axios.post('/users', user)
       .then((response) => {
-        dispatch(loginUser(user));
+        dispatch(loginUser(response.data));
       })
       .catch((error) => {
         console.log('got an error :(');
