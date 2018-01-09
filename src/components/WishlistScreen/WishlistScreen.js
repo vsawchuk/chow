@@ -5,6 +5,7 @@ import * as actions from '../../actions';
 import HeaderWithRightButton from '../sharedComponents/HeaderWithRightButton';
 import WishlistList from './WishlistScreenComponents/WishlistList';
 import WishlistScreenHeaderButton from './WishlistScreenComponents/WishlistScreenHeaderButton';
+// import AddWishlistModal from './WishlistScreenComponents/AddWishlistModal';
 
 class WishlistScreen extends Component {
   static navigationOptions = {
