@@ -5,6 +5,7 @@ import * as actions from '../../actions';
 import styles from '../../styles';
 import HeaderWithRightButton from '../sharedComponents/HeaderWithRightButton';
 import WishlistList from './WishlistScreenComponents/WishlistList';
+import WishlistScreenHeaderButton from './WishlistScreenComponents/WishlistScreenHeaderButton';
 
 class WishlistScreen extends Component {
   static navigationOptions = {
@@ -14,9 +15,7 @@ class WishlistScreen extends Component {
   }
   render() {
     const headerButton = (
-      <Button transparent>
-        <Icon style={styles.greyText} name="ios-add-circle-outline" />
-      </Button>
+      <WishlistScreenHeaderButton />
     );
     return (
       <Container>
