@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
-import { Text } from 'react-native';
-import { Container, Button, Icon } from 'native-base';
+import { Container, Icon } from 'native-base';
 import { connect } from 'react-redux';
 import * as actions from '../../actions';
-import styles from '../../styles';
 import HeaderWithRightButton from '../sharedComponents/HeaderWithRightButton';
 import UserProfile from './ProfileScreenComponents/UserProfile';
+import ProfileHeaderButton from './ProfileScreenComponents/ProfileHeaderButton';
 import LoginModal from '../sharedComponents/LoginModal';
 
 class ProfileScreen extends Component {
@@ -15,28 +14,13 @@ class ProfileScreen extends Component {
     ),
   }
   render() {
-    let headerButton;
-    let content;
-    if (this.props.loggedIn) {
-      headerButton = (
-        <Button transparent onPress={() => this.props.logoutActions()}>
-          <Text style={styles.greyText}>Log Out</Text>
-        </Button>
-      );
-      content = (
-        <UserProfile user={this.props.user} />
-      );
-    } else {
-      headerButton = (
-        <Button transparent onPress={this.props.displayLoginModal}>
-          <Text style={styles.greyText}>Log In</Text>
-        </Button>
-      );
-    }
+    const headerButton = (
+      <ProfileHeaderButton />
+    );
     return (
       <Container>
         <HeaderWithRightButton title="Profile" headerButton={headerButton} />
-        {content}
+        <UserProfile user={this.props.user} />
         <LoginModal />
       </Container>
     );

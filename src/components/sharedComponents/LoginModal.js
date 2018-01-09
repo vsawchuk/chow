@@ -25,7 +25,6 @@ const LoginModal = (props) => {
   );
 };
 
-// export default LoginModal;
 const mapStateToProps = (state, ownProps) => {
   return { logInModalVisible: state.logInModalVisible };
 };
