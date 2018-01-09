@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Container, Button, Icon } from 'native-base';
 import { connect } from 'react-redux';
-import * as actions from '../actions';
-import styles from '../styles';
+import * as actions from '../../actions';
+import styles from '../../styles';
 import HeaderWithRightButton from '../sharedComponents/HeaderWithRightButton';
 import WishlistList from './WishlistScreenComponents/WishlistList';
 

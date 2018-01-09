@@ -1,7 +1,7 @@
 import React from 'react';
 import { Text } from 'react-native';
 import { Button, Header, Icon, Input, Item } from 'native-base';
-import styles from '../../styles';
+import styles from '../../../styles';
 
 // TODO: format searchbars to be on separate lines
 const SearchHeader = ({ onSearch, restaurantOnChange, locationOnChange }) => (

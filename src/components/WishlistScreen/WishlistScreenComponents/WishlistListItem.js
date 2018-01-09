@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text } from 'react-native';
 import { Icon, ListItem, Body, Button } from 'native-base';
-import styles from '../../styles';
+import styles from '../../../styles';
 
 const WishlistListItem = ({ wishlist }) => (
   <ListItem>

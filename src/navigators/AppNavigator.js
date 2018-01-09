@@ -1,9 +1,9 @@
 import React from 'react';
 import { TabNavigator } from 'react-navigation';
 import { connect } from 'react-redux';
-import SearchScreen from '../SearchScreen/SearchScreen';
-import ProfileScreen from '../ProfileScreen/ProfileScreen';
-import WishlistScreen from '../WishlistScreen/WishlistScreen';
+import SearchScreen from '../components/SearchScreen/SearchScreen';
+import ProfileScreen from '../components/ProfileScreen/ProfileScreen';
+import WishlistScreen from '../components/WishlistScreen/WishlistScreen';
 
 const GOLD = '#F9A602';
 

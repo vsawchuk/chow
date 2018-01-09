@@ -1,6 +1,6 @@
 import React from 'react';
 import { Header, Left, Body, Title, Right } from 'native-base';
-import styles from '../styles';
+import styles from '../../styles';
 
 const HeaderWithRightButton = ({ title, headerButton }) => {
   return (

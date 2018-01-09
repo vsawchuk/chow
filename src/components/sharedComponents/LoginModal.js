@@ -2,8 +2,8 @@ import React from 'react';
 import { Modal, Text, View } from 'react-native';
 import { Button, Icon } from 'native-base';
 import { connect } from 'react-redux';
-import * as actions from '../actions';
-import styles from '../styles';
+import * as actions from '../../actions';
+import styles from '../../styles';
 
 const LoginModal = (props) => {
   return (

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Text } from 'react-native';
 import { Form, Item, Label, Picker, Button } from 'native-base';
-import styles from '../../styles';
+import styles from '../../../styles';
 
 const AddToWishlistForm = ({ currentWishlist, wishlists, onValueChange }) => (
   <Form>

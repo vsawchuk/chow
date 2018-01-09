@@ -1,7 +1,7 @@
 import React from 'react';
 import { Modal, View } from 'react-native';
 import { Button, Icon } from 'native-base';
-import styles from '../styles';
+import styles from '../../styles';
 
 const FullScreenModal = ({ isVisible, closeModal, children }) => (
   <Modal transparent={false} animationType="slide" visible={isVisible} style={styles.greyBackground} >

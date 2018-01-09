@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, Linking, Image } from 'react-native';
 import { Icon, ListItem, Body, Thumbnail, Button } from 'native-base';
-import styles from '../styles';
+import styles from '../../styles';
 import YelpRating from './YelpRating';
 import FormattedAddress from './FormattedAddress';
 
@@ -32,7 +32,7 @@ const RestaurantListItem = ({ restaurant, hasAddButton, addButtonOnPress }) => {
               onPress={() => Linking.openURL(restaurant.url)}
               style={styles.yelpBurst}
             >
-              <Image source={require('../../assets/yelp_burst/Screen/Yelp_burst_positive_RGB.png')} style={styles.yelpBurst} />
+              <Image source={require('../../../assets/yelp_burst/Screen/Yelp_burst_positive_RGB.png')} style={styles.yelpBurst} />
             </Button>
           </View>
         </View>
