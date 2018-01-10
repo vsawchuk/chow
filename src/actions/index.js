@@ -2,6 +2,7 @@ import axios from 'axios';
 import { LOCAL_IP } from 'react-native-dotenv';
 
 axios.defaults.baseURL = `http://${LOCAL_IP}`;
+console.log(axios.defaults.baseURL);
 
 export * from './LogoutActions';
 export * from './AttemptLogin';
@@ -11,3 +12,7 @@ export * from './DisplayLoginModal';
 export * from './CloseAddWishlistModal';
 export * from './DisplayAddWishlistModal';
 export * from './AttemptAddWishlist';
+export * from './SetSearchTerm';
+export * from './SetSearchLocation';
+export * from './SearchYelp';
+export * from './LoadSearchResults';

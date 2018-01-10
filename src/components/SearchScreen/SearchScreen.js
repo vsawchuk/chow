@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { Container, Icon, Content } from 'native-base';
+import { connect } from 'react-redux';
 import axios from 'axios';
 import { YELP_API_KEY } from 'react-native-dotenv';
+import * as actions from '../../actions';
 import SearchHeader from './SearchScreenComponents/SearchHeader';
 import AddToWishlistForm from './SearchScreenComponents/AddToWishlistForm';
 import FullScreenModal from '../sharedComponents/FullScreenModal';
@@ -29,35 +31,17 @@ class SearchScreen extends Component {
       <Icon name="ios-search" style={[{ color: tintColor }]} />
     ),
   }
-  constructor() {
+  constructor(props) {
     super();
+    this.props = props;
+    // console.log(props);
     this.state = {
-      results: [],
       wishlistModalVisible: false,
       wishlist: wishlists[0],
-      searchTerm: null,
-      searchLocation: null,
     };
-    this.getResults = this.getResults.bind(this);
     this.wishlistModalVisibility = this.wishlistModalVisibility.bind(this);
     this.closeWishlistModal = this.closeWishlistModal.bind(this);
     this.setWishlist = this.setWishlist.bind(this);
-    this.restaurantOnChange = this.restaurantOnChange.bind(this);
-    this.locationOnChange = this.locationOnChange.bind(this);
-  }
-  getResults() {
-    // TODO: remove when finished with searchView
-    if (this.state.searchTerm === null) {
-      this.setState({ searchTerm: 'Pizza', searchLocation: 'Virginia Beach' });
-    }
-    const requestURL = `https://api.yelp.com/v3/businesses/search?term=${this.state.searchTerm}&location=${this.state.searchLocation}&limit=50`;
-    const config = {
-      headers: { Authorization: `Bearer ${YELP_API_KEY}` },
-    };
-    // TODO: add scrolling that will dynamically give
-    // offset variable for the get request (scrolling pagination)
-    axios.get(requestURL, config)
-      .then(response => this.setState({ results: response.data.businesses }));
   }
   setWishlist(newWishlist) {
     this.setState({ wishlist: newWishlist });
@@ -69,23 +53,13 @@ class SearchScreen extends Component {
     this.wishlistModalVisibility();
     this.setState({ wishlist: wishlists[0] });
   }
-  restaurantOnChange(newRestaurant) {
-    this.setState({ searchTerm: newRestaurant });
-  }
-  locationOnChange(newLocation) {
-    this.setState({ searchLocation: newLocation });
-  }
   render() {
     return (
       <Container>
-        <SearchHeader
-          onSearch={this.getResults}
-          restaurantOnChange={this.restaurantOnChange}
-          locationOnChange={this.locationOnChange}
-        />
+        <SearchHeader />
         <Content>
           <RestaurantList
-            list={this.state.results}
+            list={this.props.searchResults}
             hasAddButton
             addButtonOnPress={this.wishlistModalVisibility}
           />
@@ -105,4 +79,8 @@ class SearchScreen extends Component {
   }
 }
 
-module.exports = SearchScreen;
+const mapStateToProps = (state, ownProps) => {
+  return { searchResults: state.searchResults };
+};
+
+export default connect(mapStateToProps, actions)(SearchScreen);
