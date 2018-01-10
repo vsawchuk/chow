@@ -1,9 +1,9 @@
-export default (state = -1, action) => {
+export default (state = {}, action) => {
   switch (action.type) {
     case 'set_current_wishlist':
       return action.payload;
     case 'clear_current_wishlist':
-      return -1;
+      return {};
     default:
       return state;
   }

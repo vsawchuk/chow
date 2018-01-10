@@ -7,39 +7,11 @@ import AddToWishlistForm from './SearchScreenComponents/AddToWishlistForm';
 import FullScreenModal from '../sharedComponents/FullScreenModal';
 import RestaurantList from '../sharedComponents/RestaurantList';
 
-// TODO: remove static wishlists and use a get request to the API to get a user's wishlists
-const wishlists = [
-  {
-    "id": 1,
-    "name": "My Wishlist"
-  },
-  {
-    "id": 2,
-    "name": "Seattle Wishlist",
-  },
-  {
-    "id": 3,
-    "name": "Going Home",
-  },
-];
-
 class SearchScreen extends Component {
   static navigationOptions = {
     tabBarIcon: ({ tintColor }) => (
       <Icon name="ios-search" style={[{ color: tintColor }]} />
     ),
-  }
-  constructor(props) {
-    super();
-    this.props = props;
-    console.log(props);
-    this.state = {
-      wishlist: wishlists[0],
-    };
-    this.setWishlist = this.setWishlist.bind(this);
-  }
-  setWishlist(newWishlist) {
-    this.setState({ wishlist: newWishlist });
   }
   render() {
     return (
@@ -55,10 +27,7 @@ class SearchScreen extends Component {
             isVisible={this.props.addRestaurantModalVisible}
             closeModal={this.props.closeAddRestaurantModal}
           >
-            <AddToWishlistForm
-              currentWishlist={this.state.wishlist}
-              onValueChange={this.setWishlist}
-            />
+            <AddToWishlistForm />
           </FullScreenModal>
         </Content>
       </Container>
@@ -67,7 +36,6 @@ class SearchScreen extends Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-  console.log(state);
   return {
     searchResults: state.searchResults,
     addRestaurantModalVisible: state.addRestaurantModalVisible,

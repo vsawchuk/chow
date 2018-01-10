@@ -6,14 +6,13 @@ import * as actions from '../../../actions';
 import styles from '../../../styles';
 
 const AddToWishlistForm = (props) => {
-  console.log(props);
   return (
     <Form>
       <Item last>
         <Label>Select a Wishlist</Label>
         <Picker
           selectedValue={props.currentWishlist}
-          onValueChange={props.onValueChange}
+          onValueChange={props.setCurrentWishlist}
         >
           {props.wishlists.map(wishlist => (
             <Picker.Item key={wishlist.id} label={wishlist.name} value={wishlist} />
@@ -29,6 +28,7 @@ const AddToWishlistForm = (props) => {
 
 const mapStateToProps = (state, ownProps) => {
   return {
+    currentWishlist: state.currentWishlist,
     wishlists: state.wishlists,
   };
 };

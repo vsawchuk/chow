@@ -17,3 +17,4 @@ export * from './SearchYelp';
 export * from './LoadSearchResults';
 export * from './DisplayAddRestaurantModal';
 export * from './CloseAddRestaurantModal';
+export * from './SetCurrentWishlist';
