@@ -1,5 +1,5 @@
 import Expo from 'expo';
-import { GOOGLE_OAUTH_IOS_CLIENT_ID} from 'react-native-dotenv';
+import { GOOGLE_OAUTH_IOS_CLIENT_ID } from 'react-native-dotenv';
 import { confirmLogin } from './ConfirmLogin';
 import { closeLoginModal } from './CloseLoginModal';
 

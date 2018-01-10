@@ -34,25 +34,25 @@ class SearchScreen extends Component {
   constructor(props) {
     super();
     this.props = props;
-    // console.log(props);
+    console.log(props);
     this.state = {
-      wishlistModalVisible: false,
+      // wishlistModalVisible: false,
       wishlist: wishlists[0],
     };
-    this.wishlistModalVisibility = this.wishlistModalVisibility.bind(this);
-    this.closeWishlistModal = this.closeWishlistModal.bind(this);
+    // this.wishlistModalVisibility = this.wishlistModalVisibility.bind(this);
+    // this.closeWishlistModal = this.closeWishlistModal.bind(this);
     this.setWishlist = this.setWishlist.bind(this);
   }
   setWishlist(newWishlist) {
     this.setState({ wishlist: newWishlist });
   }
-  wishlistModalVisibility() {
-    this.setState({ wishlistModalVisible: !this.state.wishlistModalVisible });
-  }
-  closeWishlistModal() {
-    this.wishlistModalVisibility();
-    this.setState({ wishlist: wishlists[0] });
-  }
+  // wishlistModalVisibility() {
+  //   this.setState({ wishlistModalVisible: !this.state.wishlistModalVisible });
+  // }
+  // closeWishlistModal() {
+  //   this.wishlistModalVisibility();
+  //   this.setState({ wishlist: wishlists[0] });
+  // }
   render() {
     return (
       <Container>
@@ -61,11 +61,11 @@ class SearchScreen extends Component {
           <RestaurantList
             list={this.props.searchResults}
             hasAddButton
-            addButtonOnPress={this.wishlistModalVisibility}
+            addButtonOnPress={this.props.displayAddRestaurantModal}
           />
           <FullScreenModal
-            isVisible={this.state.wishlistModalVisible}
-            closeModal={this.closeWishlistModal}
+            isVisible={this.props.addRestaurantModalVisible}
+            closeModal={this.props.closeAddRestaurantModal}
           >
             <AddToWishlistForm
               currentWishlist={this.state.wishlist}
@@ -80,7 +80,7 @@ class SearchScreen extends Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-  return { searchResults: state.searchResults };
+  return { searchResults: state.searchResults, addRestaurantModalVisible: state.addRestaurantModalVisible };
 };
 
 export default connect(mapStateToProps, actions)(SearchScreen);
