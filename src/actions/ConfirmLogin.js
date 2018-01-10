@@ -13,9 +13,7 @@ export const confirmLogin = (googleResponse) => {
     axios.post('/users', user)
       .then((response) => {
         dispatch(loginUser(response.data));
-        // TODO: replace static ID with user's ID
-        // dispatch(getWishlists(response.data.id));
-        dispatch(getWishlists(1));
+        dispatch(getWishlists(response.data.id));
       })
       .catch((error) => {
         console.log('got an error :(');

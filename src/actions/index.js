@@ -10,3 +10,4 @@ export * from './CloseLoginModal';
 export * from './DisplayLoginModal';
 export * from './CloseAddWishlistModal';
 export * from './DisplayAddWishlistModal';
+export * from './AttemptAddWishlist';

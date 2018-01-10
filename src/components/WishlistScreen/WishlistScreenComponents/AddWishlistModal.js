@@ -27,7 +27,10 @@ class AddWishlistModal extends Component {
             <Label>Wishlist Name</Label>
             <Input onChangeText={this.changeTextInput} />
           </Item>
-          <Button style={[styles.goldBackground, { alignSelf: 'center' }]}>
+          <Button
+            style={[styles.goldBackground, { alignSelf: 'center' }]}
+            onPress={() => this.props.attemptAddWishlist(this.state.textInput, this.props.userId)}
+          >
             <Text style={styles.greyText}>Create Wishlist</Text>
           </Button>
         </Form>
@@ -37,7 +40,8 @@ class AddWishlistModal extends Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-  return { addWishlistModalVisible: state.addWishlistModalVisible };
+  const userId = Object.keys(state.user).length > 0 ? state.user.id : -1;
+  return { addWishlistModalVisible: state.addWishlistModalVisible, userId };
 };
 
 export default connect(mapStateToProps, actions)(AddWishlistModal);
