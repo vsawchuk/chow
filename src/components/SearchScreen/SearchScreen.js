@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import { Container, Icon, Content } from 'native-base';
 import { connect } from 'react-redux';
-import axios from 'axios';
-import { YELP_API_KEY } from 'react-native-dotenv';
 import * as actions from '../../actions';
 import SearchHeader from './SearchScreenComponents/SearchHeader';
 import AddToWishlistForm from './SearchScreenComponents/AddToWishlistForm';
@@ -59,7 +57,6 @@ class SearchScreen extends Component {
           >
             <AddToWishlistForm
               currentWishlist={this.state.wishlist}
-              wishlists={wishlists}
               onValueChange={this.setWishlist}
             />
           </FullScreenModal>
@@ -70,7 +67,11 @@ class SearchScreen extends Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-  return { searchResults: state.searchResults, addRestaurantModalVisible: state.addRestaurantModalVisible };
+  console.log(state);
+  return {
+    searchResults: state.searchResults,
+    addRestaurantModalVisible: state.addRestaurantModalVisible,
+  };
 };
 
 export default connect(mapStateToProps, actions)(SearchScreen);
