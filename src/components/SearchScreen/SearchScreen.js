@@ -36,23 +36,13 @@ class SearchScreen extends Component {
     this.props = props;
     console.log(props);
     this.state = {
-      // wishlistModalVisible: false,
       wishlist: wishlists[0],
     };
-    // this.wishlistModalVisibility = this.wishlistModalVisibility.bind(this);
-    // this.closeWishlistModal = this.closeWishlistModal.bind(this);
     this.setWishlist = this.setWishlist.bind(this);
   }
   setWishlist(newWishlist) {
     this.setState({ wishlist: newWishlist });
   }
-  // wishlistModalVisibility() {
-  //   this.setState({ wishlistModalVisible: !this.state.wishlistModalVisible });
-  // }
-  // closeWishlistModal() {
-  //   this.wishlistModalVisibility();
-  //   this.setState({ wishlist: wishlists[0] });
-  // }
   render() {
     return (
       <Container>
