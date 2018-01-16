@@ -19,7 +19,7 @@ const AddToWishlistForm = (props) => {
           ))}
         </Picker>
       </Item>
-      <Button style={[styles.goldBackground, { alignSelf: 'center' }]}>
+      <Button style={[styles.goldBackground, { alignSelf: 'center' }]} onPress={() => props.addRestaurantToWishlist(props.userId, props.currentWishlist.id, props.currentSelectedRestaurant)}>
         <Text style={styles.greyText}>Add to Wishlist</Text>
       </Button>
     </Form>
@@ -27,8 +27,11 @@ const AddToWishlistForm = (props) => {
 };
 
 const mapStateToProps = (state, ownProps) => {
+  const userId = (Object.keys(state.user).length > 0) ? state.user.id : -1;
   return {
+    currentSelectedRestaurant: state.currentSelectedRestaurant,
     currentWishlist: state.currentWishlist,
+    userId,
     wishlists: state.wishlists,
   };
 };
