@@ -14,6 +14,7 @@ const RestaurantListItem = ({ restaurant, hasAddButton, addButtonOnPress }) => {
       </Button>
     );
   }
+  console.log(restaurant);
   return (
     <ListItem>
       <Thumbnail square size={80} source={{ uri: restaurant.image_url }} />
