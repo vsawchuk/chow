@@ -1,6 +1,6 @@
 import axios from 'axios';
-// import { clearCurrentSelectedRestaurant } from './ClearCurrentSelectedRestaurant';
-import { closeAddWishlistModal } from './CloseAddWishlistModal';
+import { clearCurrentSelectedRestaurant } from './ClearCurrentSelectedRestaurant';
+import { closeAddRestaurantModal } from './CloseAddRestaurantModal';
 
 export const addRestaurantToWishlist = (userId, wishlistId, restaurant) => {
   const requestRestaurant = {
@@ -14,11 +14,11 @@ export const addRestaurantToWishlist = (userId, wishlistId, restaurant) => {
     displayAddress: restaurant.location.display_address,
   };
   return (dispatch) => {
-    console.log(`USER: ${userId}\nWISHLIST: ${wishlistId}`)
     axios.post(`/users/${userId}/wishlists/${wishlistId}/add`, requestRestaurant)
       .then((chowResponse) => {
         console.log(chowResponse);
-        dispatch(closeAddWishlistModal());
+        dispatch(closeAddRestaurantModal());
+        dispatch(clearCurrentSelectedRestaurant());
       })
       .catch((error) => {
         console.log('ERROR ADDING RESTAURANT TO WISHLIST');
