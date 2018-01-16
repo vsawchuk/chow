@@ -21,7 +21,7 @@ class SearchScreen extends Component {
           <RestaurantList
             list={this.props.searchResults}
             hasAddButton
-            addButtonOnPress={this.props.displayAddRestaurantModal}
+            addButtonOnPress={this.props.setupAddRestaurant}
           />
           <FullScreenModal
             isVisible={this.props.addRestaurantModalVisible}

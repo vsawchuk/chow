@@ -1,15 +1,18 @@
 import React from 'react';
 import { View, Text, Linking, Image } from 'react-native';
 import { Icon, ListItem, Body, Thumbnail, Button } from 'native-base';
+import { connect } from 'react-redux';
+import * as actions from '../../actions';
 import styles from '../../styles';
 import YelpRating from './YelpRating';
 import FormattedAddress from './FormattedAddress';
 
-const RestaurantListItem = ({ restaurant, hasAddButton, addButtonOnPress }) => {
+const RestaurantListItem = (props) => {
+  const { restaurant, hasAddButton, setupAddRestaurant } = props;
   let addButton;
   if (hasAddButton) {
     addButton = (
-      <Button icon transparent style={[{ flex: 1 }]} onPress={addButtonOnPress}>
+      <Button icon transparent style={[{ flex: 1 }]} onPress={() => setupAddRestaurant(restaurant)}>
         <Icon name="ios-add-circle" style={styles.goldText} />
       </Button>
     );
@@ -42,4 +45,5 @@ const RestaurantListItem = ({ restaurant, hasAddButton, addButtonOnPress }) => {
   );
 };
 
-export default RestaurantListItem;
+// export default RestaurantListItem;
+export default connect(null, actions)(RestaurantListItem);
