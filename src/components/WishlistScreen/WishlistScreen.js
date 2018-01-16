@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Container, Icon } from 'native-base';
+import { Container } from 'native-base';
 import { connect } from 'react-redux';
 import * as actions from '../../actions';
 import HeaderWithRightButton from '../sharedComponents/HeaderWithRightButton';
@@ -8,11 +8,6 @@ import WishlistScreenHeaderButton from './WishlistScreenComponents/WishlistScree
 import AddWishlistModal from './WishlistScreenComponents/AddWishlistModal';
 
 class WishlistScreen extends Component {
-  static navigationOptions = {
-    tabBarIcon: ({ tintColor }) => (
-      <Icon name="ios-list-box-outline" style={[{ color: tintColor }]} />
-    ),
-  }
   render() {
     const headerButton = (
       <WishlistScreenHeaderButton />
@@ -20,7 +15,7 @@ class WishlistScreen extends Component {
     return (
       <Container>
         <HeaderWithRightButton title="Wishlists" headerButton={headerButton} />
-        <WishlistList list={this.props.wishlists} />
+        <WishlistList list={this.props.wishlists} navigation={this.props.navigation} />
         <AddWishlistModal />
       </Container>
     );
