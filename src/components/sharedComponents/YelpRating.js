@@ -17,9 +17,9 @@ const ratingMap = {
   5: require('../../../assets/yelp_stars/small/small_5.png'),
 };
 
-const YelpRating = ({ restaurant }) => {
+const YelpRating = ({ restaurant, source }) => {
   const requireImage = ratingMap[restaurant.rating];
-  const reviewCount = `${restaurant.review_count} Reviews`;
+  const reviewCount = source === 'yelp' ? `${restaurant.review_count} Reviews` : `${restaurant.reviewCount} Reviews`;
   return (
     <Text>
       <Image source={requireImage} />

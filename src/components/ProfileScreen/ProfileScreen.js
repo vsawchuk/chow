@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Container, Icon } from 'native-base';
 import { connect } from 'react-redux';
 import * as actions from '../../actions';
-import HeaderWithRightButton from '../sharedComponents/HeaderWithRightButton';
+import HeaderWithButtons from '../sharedComponents/HeaderWithButtons';
 import UserProfile from './ProfileScreenComponents/UserProfile';
 import ProfileHeaderButton from './ProfileScreenComponents/ProfileHeaderButton';
 import LoginModal from '../sharedComponents/LoginModal';
@@ -14,12 +14,12 @@ class ProfileScreen extends Component {
     ),
   }
   render() {
-    const headerButton = (
+    const rightButton = (
       <ProfileHeaderButton />
     );
     return (
       <Container>
-        <HeaderWithRightButton title="Profile" headerButton={headerButton} />
+        <HeaderWithButtons title="Profile" rightButton={rightButton} />
         <UserProfile user={this.props.user} />
         <LoginModal />
       </Container>

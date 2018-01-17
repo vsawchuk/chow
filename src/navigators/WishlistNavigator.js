@@ -10,7 +10,10 @@ const WishlistNavigator = StackNavigator({
     screen: WishlistScreen,
     navigationOptions: { header: null },
   },
-  Wishlist: { screen: SingleWishlistScreen },
+  Wishlist: {
+    screen: SingleWishlistScreen,
+    navigationOptions: { header: null },
+  },
 });
 
 export default WishlistNavigator;

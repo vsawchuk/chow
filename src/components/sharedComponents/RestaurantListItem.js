@@ -8,7 +8,17 @@ import YelpRating from './YelpRating';
 import FormattedAddress from './FormattedAddress';
 
 const RestaurantListItem = (props) => {
-  const { restaurant, hasAddButton, setupAddRestaurant } = props;
+  const { restaurant, hasAddButton, setupAddRestaurant, source } = props;
+  const { name, price, url } = restaurant;
+  let imageUrl;
+  let displayAddress;
+  if ( source === 'yelp' ) {
+    imageUrl = restaurant.image_url;
+    displayAddress = restaurant.location.display_address;
+  } else {
+    imageUrl = restaurant.imageUrl;
+    displayAddress = restaurant.displayAddress;
+  }
   let addButton;
   if (hasAddButton) {
     addButton = (
@@ -19,20 +29,20 @@ const RestaurantListItem = (props) => {
   }
   return (
     <ListItem>
-      <Thumbnail square size={80} source={{ uri: restaurant.image_url }} />
+      <Thumbnail square size={80} source={{ uri: imageUrl }} />
       <Body>
         <View flexDirection="row" justifyContent="space-between" style={{ paddingLeft: 10 }}>
           <View flexDirection="column" justifyContent="space-around">
-            <Text>{restaurant.name}</Text>
-            <YelpRating restaurant={restaurant} />
-            <FormattedAddress addressArray={restaurant.location.display_address} />
+            <Text>{name}</Text>
+            <YelpRating restaurant={restaurant} source={source} />
+            <FormattedAddress addressArray={displayAddress} />
           </View>
           <View flexDirection="column" justifyContent="space-around">
-            <Text>{restaurant.price}</Text>
+            <Text>{price}</Text>
             {addButton}
             <Button
               transparent
-              onPress={() => Linking.openURL(restaurant.url)}
+              onPress={() => Linking.openURL(url)}
               style={styles.yelpBurst}
             >
               <Image source={require('../../../assets/yelp_burst/Screen/Yelp_burst_positive_RGB.png')} style={styles.yelpBurst} />
@@ -44,5 +54,4 @@ const RestaurantListItem = (props) => {
   );
 };
 
-// export default RestaurantListItem;
 export default connect(null, actions)(RestaurantListItem);

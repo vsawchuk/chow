@@ -2,18 +2,20 @@ import React from 'react';
 import { Header, Left, Body, Title, Right } from 'native-base';
 import styles from '../../styles';
 
-const HeaderWithRightButton = ({ title, headerButton }) => {
+const HeaderWithButtons = ({ title, leftButton, rightButton }) => {
   return (
     <Header style={styles.header}>
-      <Left />
+      <Left>
+        {leftButton}
+      </Left>
       <Body>
         <Title style={styles.greyText}>{title}</Title>
       </Body>
       <Right>
-        {headerButton}
+        {rightButton}
       </Right>
     </Header>
   )
 };
 
-export default HeaderWithRightButton;
+export default HeaderWithButtons;
