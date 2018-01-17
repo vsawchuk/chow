@@ -6,6 +6,7 @@ import HeaderWithButtons from '../sharedComponents/HeaderWithButtons';
 import WishlistList from './WishlistScreenComponents/WishlistList';
 import WishlistScreenHeaderButton from './WishlistScreenComponents/WishlistScreenHeaderButton';
 import AddWishlistModal from './WishlistScreenComponents/AddWishlistModal';
+import styles from '../../styles';
 
 class WishlistScreen extends Component {
   render() {
@@ -15,7 +16,7 @@ class WishlistScreen extends Component {
     return (
       <Container>
         <HeaderWithButtons title="Wishlists" rightButton={rightButton} />
-        <Content>
+        <Content style={styles.whiteBackground} >
           <WishlistList list={this.props.wishlists} navigation={this.props.navigation} />
           <AddWishlistModal />
         </Content>

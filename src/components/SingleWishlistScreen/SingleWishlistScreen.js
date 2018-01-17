@@ -6,7 +6,6 @@ import HeaderWithButtons from '../sharedComponents/HeaderWithButtons';
 import styles from '../../styles';
 
 const SingleWishlistScreen = ({ navigation, wishlist }) => {
-  // const { wishlist } = navigation.state.params;
   const leftButton = (
     <Button transparent>
       <Icon
@@ -17,7 +16,7 @@ const SingleWishlistScreen = ({ navigation, wishlist }) => {
     </Button>
   );
   return (
-    <Container>
+    <Container style={styles.whiteBackground}>
       <HeaderWithButtons title={wishlist.name} leftButton={leftButton} />
       <Content>
         <RestaurantList
