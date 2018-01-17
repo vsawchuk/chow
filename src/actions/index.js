@@ -28,3 +28,4 @@ export * from './CloseAddRestaurantModal';
 export * from './SetCurrentWishlist';
 export * from './SetupAddRestaurant';
 export * from './AddRestaurantToWishlist';
+export * from './DisplayWishlist';

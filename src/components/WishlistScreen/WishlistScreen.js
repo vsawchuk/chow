@@ -9,7 +9,6 @@ import AddWishlistModal from './WishlistScreenComponents/AddWishlistModal';
 
 class WishlistScreen extends Component {
   render() {
-    console.log(this.props.wishlists);
     const rightButton = (
       <WishlistScreenHeaderButton />
     );

@@ -2,6 +2,7 @@ import { combineReducers } from 'redux';
 import UserReducer from './UserReducer';
 import WishlistsReducer from './WishlistsReducer';
 import CurrentWishlistReducer from './CurrentWishlistReducer';
+import CurrentDisplayWishlistReducer from './CurrentDisplayWishlistReducer';
 import currentSelectedRestaurantReducer from './CurrentSelectedRestaurantReducer';
 import LoginModalReducer from './LoginModalReducer';
 import AddWishlistModalReducer from './AddWishlistModalReducer';
@@ -14,6 +15,7 @@ export default combineReducers({
   user: UserReducer,
   wishlists: WishlistsReducer,
   currentWishlist: CurrentWishlistReducer,
+  currentDisplayWishlist: CurrentDisplayWishlistReducer,
   currentSelectedRestaurant: currentSelectedRestaurantReducer,
   logInModalVisible: LoginModalReducer,
   addWishlistModalVisible: AddWishlistModalReducer,

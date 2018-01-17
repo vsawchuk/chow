@@ -8,7 +8,6 @@ export const attemptAddWishlist = (wishlistName, userId) => {
     userId,
   };
   return (dispatch) => {
-    console.log('ATTEMPTING TO ADDwisHLIST')
     axios.post(`/users/${userId}/wishlists`, wishlist)
       .then((response) => {
         dispatch(getWishlists(userId));
