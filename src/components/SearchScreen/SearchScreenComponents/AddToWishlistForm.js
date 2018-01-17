@@ -6,20 +6,27 @@ import * as actions from '../../../actions';
 import styles from '../../../styles';
 
 const AddToWishlistForm = (props) => {
+  const {
+    currentWishlist,
+    setCurrentWishlist,
+    userId,
+    currentSelectedRestaurant,
+    addRestaurantToWishlist
+  } = props;
   return (
     <Form>
       <Item last>
         <Label>Select a Wishlist</Label>
         <Picker
-          selectedValue={props.currentWishlist}
-          onValueChange={props.setCurrentWishlist}
+          selectedValue={currentWishlist}
+          onValueChange={setCurrentWishlist}
         >
           {props.wishlists.map(wishlist => (
             <Picker.Item key={wishlist.id} label={wishlist.name} value={wishlist} />
           ))}
         </Picker>
       </Item>
-      <Button style={[styles.goldBackground, { alignSelf: 'center' }]} onPress={() => props.addRestaurantToWishlist(props.userId, props.currentWishlist.id, props.currentSelectedRestaurant)}>
+      <Button style={[styles.goldBackground, { alignSelf: 'center' }]} onPress={() => addRestaurantToWishlist(userId, currentWishlist.id, currentSelectedRestaurant)}>
         <Text style={styles.greyText}>Add to Wishlist</Text>
       </Button>
     </Form>
