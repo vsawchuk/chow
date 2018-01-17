@@ -1,23 +1,28 @@
 import React from 'react';
-import { Modal, Text, View } from 'react-native';
+import { Image, Modal, Text, View } from 'react-native';
 import { Button, Icon } from 'native-base';
 import { connect } from 'react-redux';
 import * as actions from '../../actions';
 import styles from '../../styles';
 
+const googleButtonSource = require('../../../assets/google_signin_buttons/2x/btn_google_signin_light_normal_web.png');
+
 const LoginModal = (props) => {
   return (
-    <Modal transparent animationType="slide" visible={props.logInModalVisible} >
-      <View style={{ height: 300 }} />
-      <View style={[styles.goldBackground, { height: 300, width: 300 }]} >
-        <Button style={styles.whiteBackground} onPress={props.closeLoginModal} >
-          <Icon name="ios-arrow-back-outline" style={styles.goldText} />
-        </Button>
-        <View style={styles.centeredRowContainer}>
-          <View>
-            <Button onPress={props.attemptLogin}>
-              <Text>Log in with Google</Text>
+    <Modal transparent animationType="fade" visible={props.logInModalVisible} >
+      <View style={styles.fadedBackground} >
+        <View style={styles.popupModal} >
+          <View style={styles.popupModalLeftButtonContainer} >
+            <Button transparent onPress={props.closeLoginModal} >
+              <Icon name="ios-close-circle-outline" style={styles.goldText} />
             </Button>
+          </View>
+          <View style={styles.popupModalCenterButtonContainer}>
+            <View>
+              <Button onPress={props.attemptLogin}>
+                <Image source={googleButtonSource} />
+              </Button>
+            </View>
           </View>
         </View>
       </View>

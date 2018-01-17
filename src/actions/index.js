@@ -1,15 +1,15 @@
 import axios from 'axios';
-import { HOME_LOCAL_IP } from 'react-native-dotenv';
-
-axios.defaults.baseURL = `http://${HOME_LOCAL_IP}`;
-
-console.log(HOME_LOCAL_IP);
-
-// import { ADA_LOCAL_IP } from 'react-native-dotenv';
+// import { HOME_LOCAL_IP } from 'react-native-dotenv';
 //
-// axios.defaults.baseURL = `http://${ADA_LOCAL_IP}`;
+// axios.defaults.baseURL = `http://${HOME_LOCAL_IP}`;
 //
-// console.log(ADA_LOCAL_IP);
+// console.log(HOME_LOCAL_IP);
+
+import { ADA_LOCAL_IP } from 'react-native-dotenv';
+
+axios.defaults.baseURL = `http://${ADA_LOCAL_IP}`;
+
+console.log(ADA_LOCAL_IP);
 
 export * from './LogoutActions';
 export * from './AttemptLogin';

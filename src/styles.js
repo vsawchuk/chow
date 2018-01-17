@@ -62,6 +62,27 @@ const styles = StyleSheet.create({
     fontSize: 20,
     paddingTop: 20,
   },
+  popupModal: {
+    height: 130,
+    width: 250,
+    backgroundColor: 'white',
+    borderRadius: 10,
+  },
+  popupModalLeftButtonContainer: {
+    flex: 1,
+  },
+  popupModalCenterButtonContainer: {
+    flex: 6,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  fadedBackground: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: 'rgba(48, 48, 48, 0.3)',
+  },
 });
 
 module.exports = styles;
