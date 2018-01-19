@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import * as actions from '../../actions';
 import styles from '../../styles';
 
-const googleButtonSource = require('../../../assets/google_signin_buttons/2x/btn_google_signin_light_normal_web.png');
+const googleButtonSource = require('../../../assets/google_signin_buttons/2x/btn_google_signin_dark_normal_web.png');
 
 const LoginModal = (props) => {
   return (
@@ -14,7 +14,7 @@ const LoginModal = (props) => {
         <View style={styles.popupModal} >
           <View style={styles.popupModalLeftButtonContainer} >
             <Button transparent onPress={props.closeLoginModal} >
-              <Icon name="ios-close-circle-outline" style={styles.goldText} />
+              <Icon name="md-close" style={styles.goldText} />
             </Button>
           </View>
           <View style={styles.popupModalCenterButtonContainer}>
