@@ -25,4 +25,3 @@ const WishlistListItem = ({ wishlist, navigation, displayWishlist }) => {
 }
 
 export default connect(null, actions)(WishlistListItem);
-// () => navigation.navigate('Wishlist', {wishlist})
