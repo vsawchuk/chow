@@ -1,16 +1,15 @@
 import axios from 'axios';
+// API DEV ENV @HOME
 // import { HOME_LOCAL_IP } from 'react-native-dotenv';
-//
 // axios.defaults.baseURL = `http://${HOME_LOCAL_IP}`;
-//
 // console.log(HOME_LOCAL_IP);
-//
+
+// API DEV ENV @ADA
 // import { ADA_LOCAL_IP } from 'react-native-dotenv';
-//
 // axios.defaults.baseURL = `http://${ADA_LOCAL_IP}`;
-//
 // console.log(ADA_LOCAL_IP);
 
+// API PROD ENV
 import { PRODUCTION_API } from 'react-native-dotenv';
 axios.defaults.baseURL = `http://${PRODUCTION_API}`;
 
