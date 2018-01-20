@@ -5,7 +5,7 @@ import * as actions from '../../actions';
 import HeaderWithButtons from '../sharedComponents/HeaderWithButtons';
 import WishlistList from './WishlistScreenComponents/WishlistList';
 import WishlistScreenHeaderButton from './WishlistScreenComponents/WishlistScreenHeaderButton';
-import AddWishlistModal from './WishlistScreenComponents/AddWishlistModal';
+import WishlistModal from './WishlistScreenComponents/WishlistModal';
 import styles from '../../styles';
 
 class WishlistScreen extends Component {
@@ -18,7 +18,7 @@ class WishlistScreen extends Component {
         <HeaderWithButtons title="Wishlists" rightButton={rightButton} />
         <Content style={styles.whiteBackground} >
           <WishlistList list={this.props.wishlists} navigation={this.props.navigation} />
-          <AddWishlistModal />
+          <WishlistModal />
         </Content>
       </Container>
     );

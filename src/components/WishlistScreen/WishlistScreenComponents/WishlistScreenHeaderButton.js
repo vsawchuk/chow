@@ -5,7 +5,7 @@ import * as actions from '../../../actions';
 import styles from '../../../styles';
 
 const WishlistScreenHeaderButton = (props) => {
-  const onPress = props.loggedIn ? props.displayAddWishlistModal : props.displayLoginModal;
+  const onPress = props.loggedIn ? () => props.prepWishlistModal("add") : props.displayLoginModal;
   return (
     <Button transparent>
       <Icon style={styles.greyText} name="ios-add-circle-outline" onPress={onPress} />

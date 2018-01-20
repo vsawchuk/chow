@@ -5,7 +5,8 @@ import CurrentWishlistReducer from './CurrentWishlistReducer';
 import CurrentDisplayWishlistReducer from './CurrentDisplayWishlistReducer';
 import currentSelectedRestaurantReducer from './CurrentSelectedRestaurantReducer';
 import LoginModalReducer from './LoginModalReducer';
-import AddWishlistModalReducer from './AddWishlistModalReducer';
+import WishlistModalReducer from './WishlistModalReducer';
+import WishlistModalTypeReducer from './WishlistModalTypeReducer';
 import AddRestaurantModalReducer from './AddRestaurantModalReducer';
 import SearchResultsReducer from './SearchResultsReducer';
 import SearchLocationReducer from './SearchLocationReducer';
@@ -18,7 +19,8 @@ export default combineReducers({
   currentDisplayWishlist: CurrentDisplayWishlistReducer,
   currentSelectedRestaurant: currentSelectedRestaurantReducer,
   logInModalVisible: LoginModalReducer,
-  addWishlistModalVisible: AddWishlistModalReducer,
+  wishlistModalType: WishlistModalTypeReducer,
+  wishlistModalVisible: WishlistModalReducer,
   addRestaurantModalVisible: AddRestaurantModalReducer,
   searchResults: SearchResultsReducer,
   searchTerm: SearchTermReducer,

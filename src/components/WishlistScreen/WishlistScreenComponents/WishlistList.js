@@ -1,16 +1,12 @@
 import React from 'react';
-import { ListView } from 'react-native';
+import { ListView, Alert } from 'react-native';
 import { List, Button, Icon } from 'native-base';
+import { connect } from 'react-redux';
+import * as actions from '../../../actions';
 import WishlistListItem from './WishlistListItem';
 
-const WishlistList = ({ list, navigation }) => {
-  // const wishlists = list.map(wishlist => (
-  //   <WishlistListItem
-  //     key={wishlist.id}
-  //     wishlist={wishlist}
-  //     navigation={navigation}
-  //   />
-  // ));
+const WishlistList = (props) => {
+  const { list, navigation, prepWishlistModal } = props;
   const ds = new ListView.DataSource({ rowHasChanged: (row1, row2) => row1 !== row2 });
   return (
     <List
@@ -23,19 +19,26 @@ const WishlistList = ({ list, navigation }) => {
           />)
       }
       renderLeftHiddenRow={data =>
-        (<Button full onPress={() => alert(data)}>
-          <Icon active name="information-circle" />
+        (<Button full success onPress={() => prepWishlistModal("edit", data)}>
+          <Icon active name="ios-create-outline" />
         </Button>)
       }
       leftOpenValue={75}
       renderRightHiddenRow={data =>
-        (<Button full onPress={() => alert(data)}>
-          <Icon active name="information-circle" />
+        (<Button full danger onPress={() => Alert.alert(
+          'Alert Title',
+          'My Alert Message',
+          [
+            {text: 'Cancel', onPress: () => console.log('Cancelled')},
+            {text: 'Ok', onPress: () => console.log('Oked')},
+          ],
+        )}>
+          <Icon active color="red" name="ios-trash-outline" />
         </Button>)
       }
-      rightOpenValue={75}
+      rightOpenValue={-75}
     />
   );
 };
 
-export default WishlistList;
+export default connect(null, actions)(WishlistList);

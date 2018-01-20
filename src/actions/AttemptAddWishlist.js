@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { getWishlists } from './GetWishlists';
-import { closeAddWishlistModal } from './CloseAddWishlistModal';
+import { closeWishlistModal } from './CloseWishlistModal';
 
 export const attemptAddWishlist = (wishlistName, userId) => {
   const wishlist = {
@@ -11,7 +11,7 @@ export const attemptAddWishlist = (wishlistName, userId) => {
     axios.post(`/users/${userId}/wishlists`, wishlist)
       .then((response) => {
         dispatch(getWishlists(userId));
-        dispatch(closeAddWishlistModal());
+        dispatch(closeWishlistModal());
       })
       .catch((error) => {
         console.log('got an error :(');
