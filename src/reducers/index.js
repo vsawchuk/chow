@@ -3,6 +3,7 @@ import UserReducer from './UserReducer';
 import WishlistsReducer from './WishlistsReducer';
 import CurrentWishlistReducer from './CurrentWishlistReducer';
 import CurrentDisplayWishlistReducer from './CurrentDisplayWishlistReducer';
+import CurrentEditWishlistReducer from './CurrentEditWishlistReducer';
 import currentSelectedRestaurantReducer from './CurrentSelectedRestaurantReducer';
 import LoginModalReducer from './LoginModalReducer';
 import WishlistModalReducer from './WishlistModalReducer';
@@ -17,6 +18,7 @@ export default combineReducers({
   wishlists: WishlistsReducer,
   currentWishlist: CurrentWishlistReducer,
   currentDisplayWishlist: CurrentDisplayWishlistReducer,
+  currentEditWishlist: CurrentEditWishlistReducer,
   currentSelectedRestaurant: currentSelectedRestaurantReducer,
   logInModalVisible: LoginModalReducer,
   wishlistModalType: WishlistModalTypeReducer,
