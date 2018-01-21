@@ -26,11 +26,11 @@ const WishlistList = (props) => {
       leftOpenValue={75}
       renderRightHiddenRow={data =>
         (<Button full danger onPress={() => Alert.alert(
-          'Alert Title',
-          'My Alert Message',
+          `Delete Wishlist`,
+          `Are you sure you want to delete ${data.name}?`,
           [
-            {text: 'Cancel', onPress: () => console.log('Cancelled')},
-            {text: 'Ok', onPress: () => console.log('Oked')},
+            {text: 'Cancel'},
+            {text: 'Ok', onPress: () => props.attemptDeleteWishlist(data.id, props.userId)},
           ],
         )}>
           <Icon active color="red" name="ios-trash-outline" />
@@ -41,4 +41,9 @@ const WishlistList = (props) => {
   );
 };
 
-export default connect(null, actions)(WishlistList);
+const mapStateToProps = (state, ownProps) => {
+  const userId = (Object.keys(state.user).length > 0) ? state.user.id : -1;
+  return { userId };
+};
+
+export default connect(mapStateToProps, actions)(WishlistList);

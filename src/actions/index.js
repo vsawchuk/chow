@@ -1,8 +1,8 @@
 import axios from 'axios';
 // API DEV ENV @HOME
-import { HOME_LOCAL_IP } from 'react-native-dotenv';
-axios.defaults.baseURL = `http://${HOME_LOCAL_IP}`;
-console.log(HOME_LOCAL_IP);
+// import { HOME_LOCAL_IP } from 'react-native-dotenv';
+// axios.defaults.baseURL = `http://${HOME_LOCAL_IP}`;
+// console.log(HOME_LOCAL_IP);
 
 // API DEV ENV @ADA
 // import { ADA_LOCAL_IP } from 'react-native-dotenv';
@@ -10,8 +10,8 @@ console.log(HOME_LOCAL_IP);
 // console.log(ADA_LOCAL_IP);
 
 // API PROD ENV
-// import { PRODUCTION_API } from 'react-native-dotenv';
-// axios.defaults.baseURL = `http://${PRODUCTION_API}`;
+import { PRODUCTION_API } from 'react-native-dotenv';
+axios.defaults.baseURL = `http://${PRODUCTION_API}`;
 
 export * from './LogoutActions';
 export * from './AttemptLogin';
@@ -23,6 +23,7 @@ export * from './DisplayWishlistModal';
 export * from './PrepWishlistModal';
 export * from './AttemptAddWishlist';
 export * from './AttemptEditWishlist';
+export * from './AttemptDeleteWishlist';
 export * from './SetSearchTerm';
 export * from './SetSearchLocation';
 export * from './SearchYelp';

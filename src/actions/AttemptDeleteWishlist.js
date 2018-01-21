@@ -1,14 +1,11 @@
 import axios from 'axios';
 import { getWishlists } from './GetWishlists';
-import { closeWishlistModal } from './CloseWishlistModal';
 
-export const attemptEditWishlist = (wishlistName, wishlistId, userId) => {
+export const attemptDeleteWishlist = (wishlistId, userId) => {
   return (dispatch) => {
-    axios.put(`/users/${userId}/wishlists/${wishlistId}?name=${wishlistName}`)
+    axios.delete(`/users/${userId}/wishlists/${wishlistId}`)
       .then((response) => {
-        console.log(response);
         dispatch(getWishlists(userId));
-        dispatch(closeWishlistModal());
       })
       .catch((error) => {
         console.log('got an error :(');
