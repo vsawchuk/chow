@@ -17,6 +17,7 @@ export const searchYelp = (searchTerm, searchLocation, userLocation) => {
     dispatch(incrementUserSearchCount());
     axios.get(requestURL, config)
       .then((response) => {
+        console.log(response.data.businesses[0]);
         dispatch(loadSearchResults(response.data.businesses));
       })
       .catch((error) => {

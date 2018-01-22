@@ -12,12 +12,16 @@ const RestaurantListItem = (props) => {
   const { name, price, url } = restaurant;
   let imageUrl;
   let displayAddress;
+  let yelpOffsetText;
+  let chowOffsetStyle;
   if ( source === 'yelp' ) {
     imageUrl = restaurant.image_url;
     displayAddress = restaurant.location.display_address;
+    yelpOffsetText = "   ";
   } else {
     imageUrl = restaurant.imageUrl;
     displayAddress = restaurant.displayAddress;
+    chowOffsetStyle = styles.leftPadding15;
   }
   let addButton;
   if (hasAddButton) {
@@ -28,16 +32,16 @@ const RestaurantListItem = (props) => {
     );
   }
   return (
-    <ListItem>
-      <Thumbnail square size={80} source={{ uri: imageUrl }} />
+    <ListItem style={chowOffsetStyle}>
+      <Thumbnail square large source={{ uri: imageUrl }} />
       <Body>
         <View flexDirection="row" justifyContent="space-between" style={{ paddingLeft: 10 }}>
           <View flexDirection="column" justifyContent="space-around">
-            <Text>{name}</Text>
+            <Text style={styles.restaurantName}>{name}</Text>
             <YelpRating restaurant={restaurant} source={source} />
             <FormattedAddress addressArray={displayAddress} />
           </View>
-          <View flexDirection="column" justifyContent="space-around">
+          <View flexDirection="column" justifyContent="space-around" alignItems="center" >
             <Text>{price}</Text>
             {addButton}
             <Button
@@ -45,6 +49,7 @@ const RestaurantListItem = (props) => {
               onPress={() => Linking.openURL(url)}
               style={styles.yelpBurst}
             >
+              <Text>{yelpOffsetText}</Text>
               <Image source={require('../../../assets/yelp_burst/Screen/Yelp_burst_positive_RGB.png')} style={styles.yelpBurst} />
             </Button>
           </View>

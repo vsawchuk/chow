@@ -83,6 +83,13 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     backgroundColor: 'rgba(48, 48, 48, 0.3)',
   },
+  restaurantName: {
+    fontSize: 15,
+    fontWeight: 'bold',
+  },
+  leftPadding15: {
+    paddingLeft: 15,
+  },
 });
 
 module.exports = styles;

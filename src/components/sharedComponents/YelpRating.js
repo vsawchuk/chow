@@ -23,7 +23,7 @@ const YelpRating = ({ restaurant, source }) => {
   return (
     <Text>
       <Image source={requireImage} />
-      <Text>{reviewCount}</Text>
+      <Text>  {reviewCount}</Text>
     </Text>
   );
 };
