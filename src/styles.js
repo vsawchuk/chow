@@ -90,6 +90,16 @@ const styles = StyleSheet.create({
   leftPadding15: {
     paddingLeft: 15,
   },
+  searchBar: {
+    paddingBottom: 10,
+    backgroundColor: GREY,
+  },
+  searchBarTextPadding: {
+    paddingTop: 6,
+  },
+  searchBarIconPadding: {
+    paddingTop: 8,
+  },
 });
 
 module.exports = styles;
