@@ -13,7 +13,7 @@ class SearchScreen extends Component {
   }
   componentWillReceiveProps(nextProps) {
     if (nextProps.userSearchCount == 0 && Object.keys(nextProps.userLocation).length > 0) {
-      nextProps.searchYelp("Restaurants", nextProps.userLocation);
+      nextProps.searchYelp("Restaurants", "", nextProps.userLocation);
     }
   }
   static navigationOptions = {

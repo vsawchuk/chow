@@ -17,7 +17,7 @@ const SearchHeader = (props) => {
         <Icon name="ios-compass-outline" />
         <Input placeholder="Location" name="locationSearch" onChangeText={props.setSearchLocation} />
       </Item>
-      <Button transparent onPress={() => props.searchYelp(props.searchTerm, props.searchLocation)}>
+      <Button transparent onPress={() => props.searchYelp(props.searchTerm, props.searchLocation, props.userLocation)}>
         <Text style={styles.greyText}>Search</Text>
       </Button>
     </Header>
@@ -25,7 +25,7 @@ const SearchHeader = (props) => {
 };
 
 const mapStateToProps = (state, ownProps) => {
-  return { searchTerm: state.searchTerm, searchLocation: state.searchLocation };
+  return { searchTerm: state.searchTerm, searchLocation: state.searchLocation, userLocation: state.userLocation };
 };
 
 export default connect(mapStateToProps, actions)(SearchHeader);
