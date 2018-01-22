@@ -9,8 +9,8 @@ import styles from '../../../styles';
 const SearchHeader = (props) => {
   const { height, width } = Dimensions.get('window');
   return (
-    <Header style={[styles.header, {height: 120}]} searchBar rounded flexDirection="column">
-      <View height={30} width={width * 0.805} >
+    <Header style={[styles.header, {height: 130}]} searchBar rounded flexDirection="column">
+      <View marginTop={5} height={30} width={width * 0.80} >
         <Item style={styles.searchBar} >
           <View style={styles.searchBarIconPadding} >
             <Icon name="ios-search" />
