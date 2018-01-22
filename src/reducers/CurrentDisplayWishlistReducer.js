@@ -3,7 +3,7 @@ export default (state = {}, action) => {
     case 'set_current_display_wishlist':
       return action.payload;
     case 'clear_current_display_wishlist':
-      return {};
+      return { restaurants: [] };
     default:
       return state;
   }
