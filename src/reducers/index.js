@@ -12,6 +12,8 @@ import AddRestaurantModalReducer from './AddRestaurantModalReducer';
 import SearchResultsReducer from './SearchResultsReducer';
 import SearchLocationReducer from './SearchLocationReducer';
 import SearchTermReducer from './SearchTermReducer';
+import UserLocationReducer from './UserLocationReducer';
+import UserSearchCountReducer from './UserSearchCountReducer';
 
 export default combineReducers({
   user: UserReducer,
@@ -27,4 +29,6 @@ export default combineReducers({
   searchResults: SearchResultsReducer,
   searchTerm: SearchTermReducer,
   searchLocation: SearchLocationReducer,
+  userLocation: UserLocationReducer,
+  userSearchCount: UserSearchCountReducer,
 });

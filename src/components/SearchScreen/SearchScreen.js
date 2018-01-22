@@ -8,6 +8,14 @@ import FullScreenModal from '../sharedComponents/FullScreenModal';
 import RestaurantList from '../sharedComponents/RestaurantList';
 
 class SearchScreen extends Component {
+  componentWillMount() {
+    this.props.getUserLocation();
+  }
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.userSearchCount == 0 && Object.keys(nextProps.userLocation).length > 0) {
+      nextProps.searchYelp("Restaurants", nextProps.userLocation);
+    }
+  }
   static navigationOptions = {
     tabBarIcon: ({ tintColor }) => (
       <Icon name="ios-search" style={[{ color: tintColor }]} />
@@ -37,6 +45,8 @@ class SearchScreen extends Component {
 
 const mapStateToProps = (state, ownProps) => {
   return {
+    userLocation: state.userLocation,
+    userSearchCount: state.userSearchCount,
     searchResults: state.searchResults,
     addRestaurantModalVisible: state.addRestaurantModalVisible,
   };

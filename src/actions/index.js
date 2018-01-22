@@ -35,3 +35,4 @@ export * from './SetupAddRestaurant';
 export * from './AddRestaurantToWishlist';
 export * from './AttemptDeleteRestaurantFromWishlist';
 export * from './DisplayWishlist';
+export * from './GetUserLocation';

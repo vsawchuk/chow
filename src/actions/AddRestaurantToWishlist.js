@@ -24,7 +24,6 @@ export const addRestaurantToWishlist = (userId, wishlistId, restaurant) => {
         dispatch(clearCurrentSelectedRestaurant());
       })
       .catch((error) => {
-        console.log('ERROR ADDING RESTAURANT TO WISHLIST');
         console.log(error);
       });
   };
