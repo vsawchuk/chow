@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { loginUser } from './LoginUser';
 import { getWishlists } from './GetWishlists';
+import { clearLoading } from './ClearLoading';
 
 export const confirmLogin = (googleResponse) => {
   const user = {
@@ -12,10 +13,12 @@ export const confirmLogin = (googleResponse) => {
   return (dispatch) => {
     axios.post('/users', user)
       .then((response) => {
+        dispatch(clearLoading());
         dispatch(loginUser(response.data));
         dispatch(getWishlists(response.data.id));
       })
       .catch((error) => {
+        dispatch(clearLoading());
         console.log('got an error :(');
         console.log(error);
       });
