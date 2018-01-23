@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { View, Text, Dimensions } from 'react-native';
 import { Container, Icon, Content } from 'native-base';
 import { connect } from 'react-redux';
+import Spinner from 'react-native-loading-spinner-overlay';
 import * as actions from '../../actions';
 import SearchHeader from './SearchScreenComponents/SearchHeader';
 import AddToWishlistForm from './SearchScreenComponents/AddToWishlistForm';
@@ -24,7 +25,11 @@ class SearchScreen extends Component {
   }
   render() {
     let listContent;
-    if (this.props.searchResults.length > 0) {
+    if (this.props.loading) {
+      listContent = (
+        <Spinner visible={true} />
+      )
+    } else if (this.props.searchResults.length > 0) {
       listContent = (
         <RestaurantList
           list={this.props.searchResults}
@@ -63,6 +68,7 @@ class SearchScreen extends Component {
 
 const mapStateToProps = (state, ownProps) => {
   return {
+    loading: state.loading,
     userLocation: state.userLocation,
     userSearchCount: state.userSearchCount,
     searchResults: state.searchResults,

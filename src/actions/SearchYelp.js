@@ -2,6 +2,8 @@ import axios from 'axios';
 import { YELP_API_KEY } from 'react-native-dotenv';
 import { loadSearchResults } from './LoadSearchResults';
 import { incrementUserSearchCount } from './IncrementUserSearchCount';
+import { setLoading } from './SetLoading';
+import { clearLoading } from './ClearLoading';
 
 export const searchYelp = (searchTerm, searchLocation, userLocation) => {
   let requestURL;
@@ -15,12 +17,14 @@ export const searchYelp = (searchTerm, searchLocation, userLocation) => {
   };
   return (dispatch) => {
     dispatch(incrementUserSearchCount());
+    dispatch(setLoading());
     axios.get(requestURL, config)
       .then((response) => {
-        console.log(response.data.businesses[0]);
+        dispatch(clearLoading());
         dispatch(loadSearchResults(response.data.businesses));
       })
       .catch((error) => {
+        dispatch(clearLoading());
         console.log(error);
       });
   }
