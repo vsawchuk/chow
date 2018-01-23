@@ -23,6 +23,5 @@ export const searchYelp = (searchTerm, searchLocation, userLocation) => {
       .catch((error) => {
         console.log(error);
       });
-
   }
 };
