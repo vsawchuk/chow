@@ -24,12 +24,7 @@ class SearchScreen extends Component {
     ),
   }
   render() {
-    let listContent;
-    if (this.props.loading) {
-      listContent = (
-        <Spinner visible={true} />
-      )
-    } else if (this.props.searchResults.length > 0) {
+    if (this.props.searchResults.length > 0) {
       listContent = (
         <RestaurantList
           list={this.props.searchResults}

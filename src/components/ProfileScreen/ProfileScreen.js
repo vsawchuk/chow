@@ -19,6 +19,7 @@ class ProfileScreen extends Component {
     return (
       <Container>
         <HeaderWithButtons title="Profile" rightButton={<ProfileHeaderButton />} />
+        <Spinner visible={this.props.loading} />
         <UserProfile user={this.props.user} />
         <LoginModal />
       </Container>

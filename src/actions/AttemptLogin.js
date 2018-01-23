@@ -6,8 +6,8 @@ import { setLoading } from './SetLoading';
 import { clearLoading } from './ClearLoading';
 
 export const attemptLogin = () => {
-  setLoading();
   return (dispatch) => {
+    dispatch(setLoading());
     Expo.Google.logInAsync({
       iosClientId: GOOGLE_OAUTH_IOS_CLIENT_ID,
       scopes: ['profile', 'email'],
