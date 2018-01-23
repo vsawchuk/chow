@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { View, Text, Dimensions } from 'react-native';
 import { Container, Icon, Content } from 'native-base';
 import { connect } from 'react-redux';
 import * as actions from '../../actions';
@@ -22,15 +23,32 @@ class SearchScreen extends Component {
     ),
   }
   render() {
+    let listContent;
+    if (this.props.searchResults.length > 0) {
+      listContent = (
+        <RestaurantList
+          list={this.props.searchResults}
+          hasAddButton
+          source='yelp'
+        />
+      )
+    } else {
+      listContent = (
+        <View alignItems='center' >
+          <View height={200} />
+          <View width={Dimensions.get('window').width - 50} >
+            <Text style={{textAlign: "center", fontSize: 20, fontWeight: 'bold'}} >No results yet!</Text>
+            <View height={5} />
+            <Text style={{textAlign: "center", fontSize: 17}}>Search for your next favorite restaurant using the searchbar above.</Text>
+          </View>
+        </View>
+      )
+    }
     return (
       <Container>
         <SearchHeader />
         <Content>
-          <RestaurantList
-            list={this.props.searchResults}
-            hasAddButton
-            source='yelp'
-          />
+          {listContent}
           <FullScreenModal
             isVisible={this.props.addRestaurantModalVisible}
             closeModal={this.props.closeAddRestaurantModal}

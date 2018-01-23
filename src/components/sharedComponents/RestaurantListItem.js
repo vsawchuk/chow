@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, Linking, Image, Dimensions } from 'react-native';
+import { View, Text, Linking, Image } from 'react-native';
 import { Icon, ListItem, Body, Thumbnail, Button } from 'native-base';
 import { connect } from 'react-redux';
 import * as actions from '../../actions';
@@ -9,9 +9,8 @@ import FormattedAddress from './FormattedAddress';
 import { calculateDistanceFromCoordinates } from '../../formulas';
 
 const RestaurantListItem = (props) => {
-  const { restaurant, hasAddButton, setupAddRestaurant, source, haveLocation, userLocation } = props;
+  const { restaurant, hasAddButton, setupAddRestaurant, source, haveLocation, userLocation, loggedIn, wishlists, userId } = props;
   const { name, price, url } = restaurant;
-  const { screenHeight, screenWidth } = Dimensions.get('window');
   let imageUrl;
   let displayAddress;
   let yelpOffsetText;
@@ -31,8 +30,9 @@ const RestaurantListItem = (props) => {
     haveRestaurantLocation = Object.keys(restaurant).includes("latitude")  && Object.keys(restaurant).includes("longitude");
   }
   if (hasAddButton) {
+    const onPress = loggedIn ? () => setupAddRestaurant(restaurant, wishlists, userId) : props.displayLoginModal;
     addButton = (
-      <Button icon transparent style={[{ flex: 1 }]} onPress={() => setupAddRestaurant(restaurant)}>
+      <Button icon transparent style={[{ flex: 1 }]} onPress={onPress}>
         <Icon name="ios-add-circle" style={styles.goldText} />
       </Button>
     );
@@ -40,11 +40,11 @@ const RestaurantListItem = (props) => {
   if (haveLocation && haveRestaurantLocation) {
     const restaurantLatitude = source == 'yelp' ? restaurant.coordinates.latitude : restaurant.latitude;
     const restaurantLongitude = source == 'yelp' ? restaurant.coordinates.longitude : restaurant.longitude;
-    const distanceNumber = calculateDistanceFromCoordinates(userLocation.latitude, userLocation.longitude, restaurantLatitude, restaurantLongitude).toFixed(1);
-    distance = `${distanceNumber} mi`;
+    const distanceNumber = calculateDistanceFromCoordinates(userLocation.latitude, userLocation.longitude, restaurantLatitude, restaurantLongitude);
+    distance = `${distanceNumber.toFixed(1)} mi`;
   }
   return (
-    <ListItem style={[chowOffsetStyle, {width: screenWidth}]}>
+    <ListItem style={chowOffsetStyle}>
       <Thumbnail square large source={{ uri: imageUrl }} />
       <Body flexDirection="row" justifyContent="space-between" style={{ paddingLeft: 10 }}>
         <View flex={5} flexDirection="column" justifyContent="space-around">
@@ -73,8 +73,10 @@ const RestaurantListItem = (props) => {
 };
 
 const mapStateToProps = (state, ownProps) => {
+  const loggedIn = Object.keys(state.user).length > 0;
   const haveLocation = Object.keys(state.userLocation).length > 0;
-  return { haveLocation, userLocation: state.userLocation };
+  const userId = loggedIn ? state.user.id : null;
+  return { haveLocation, userLocation: state.userLocation, loggedIn, wishlists: state.wishlists, userId };
 };
 
 export default connect(mapStateToProps, actions)(RestaurantListItem);
