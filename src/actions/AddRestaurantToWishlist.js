@@ -18,7 +18,6 @@ export const addRestaurantToWishlist = (userId, wishlistId, restaurant) => {
     latitude: restaurant.coordinates.latitude,
     longitude: restaurant.coordinates.longitude,
   };
-  console.log(requestRestaurant);
   return (dispatch) => {
     axios.post(`/users/${userId}/wishlists/${wishlistId}/add`, requestRestaurant)
       .then((chowResponse) => {

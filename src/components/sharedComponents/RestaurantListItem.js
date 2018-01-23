@@ -6,31 +6,42 @@ import * as actions from '../../actions';
 import styles from '../../styles';
 import YelpRating from './YelpRating';
 import FormattedAddress from './FormattedAddress';
+import { calculateDistanceFromCoordinates } from '../../formulas';
 
 const RestaurantListItem = (props) => {
-  const { restaurant, hasAddButton, setupAddRestaurant, source } = props;
+  const { restaurant, hasAddButton, setupAddRestaurant, source, haveLocation, userLocation } = props;
   const { name, price, url } = restaurant;
   const { screenHeight, screenWidth } = Dimensions.get('window');
   let imageUrl;
   let displayAddress;
   let yelpOffsetText;
   let chowOffsetStyle;
+  let addButton;
+  let distance;
+  let haveRestaurantLocation
   if ( source === 'yelp' ) {
     imageUrl = restaurant.image_url;
     displayAddress = restaurant.location.display_address;
     yelpOffsetText = "   ";
+    haveRestaurantLocation = Object.keys(restaurant.coordinates).length > 0;
   } else {
     imageUrl = restaurant.imageUrl;
     displayAddress = restaurant.displayAddress;
     chowOffsetStyle = styles.leftPadding15;
+    haveRestaurantLocation = Object.keys(restaurant).includes("latitude")  && Object.keys(restaurant).includes("longitude");
   }
-  let addButton;
   if (hasAddButton) {
     addButton = (
       <Button icon transparent style={[{ flex: 1 }]} onPress={() => setupAddRestaurant(restaurant)}>
         <Icon name="ios-add-circle" style={styles.goldText} />
       </Button>
     );
+  }
+  if (haveLocation && haveRestaurantLocation) {
+    const restaurantLatitude = source == 'yelp' ? restaurant.coordinates.latitude : restaurant.latitude;
+    const restaurantLongitude = source == 'yelp' ? restaurant.coordinates.longitude : restaurant.longitude;
+    const distanceNumber = calculateDistanceFromCoordinates(userLocation.latitude, userLocation.longitude, restaurantLatitude, restaurantLongitude).toFixed(1);
+    distance = `${distanceNumber} mi`;
   }
   return (
     <ListItem style={[chowOffsetStyle, {width: screenWidth}]}>
@@ -42,7 +53,10 @@ const RestaurantListItem = (props) => {
           <FormattedAddress addressArray={displayAddress} />
         </View>
         <View flexDirection="column" justifyContent="space-around" alignItems="center" >
-          <Text>{price}</Text>
+          <View alignItems="flex-end">
+            <Text>{distance}</Text>
+            <Text>{price}</Text>
+          </View>
           {addButton}
           <Button
             transparent
@@ -58,4 +72,9 @@ const RestaurantListItem = (props) => {
   );
 };
 
-export default connect(null, actions)(RestaurantListItem);
+const mapStateToProps = (state, ownProps) => {
+  const haveLocation = Object.keys(state.userLocation).length > 0;
+  return { haveLocation, userLocation: state.userLocation };
+};
+
+export default connect(mapStateToProps, actions)(RestaurantListItem);
