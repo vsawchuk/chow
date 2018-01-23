@@ -15,6 +15,7 @@ import SearchTermReducer from './SearchTermReducer';
 import UserLocationReducer from './UserLocationReducer';
 import UserSearchCountReducer from './UserSearchCountReducer';
 import LoadingReducer from './LoadingReducer';
+import AddRestaurantConfirmationReducer from './AddRestaurantConfirmationReducer';
 
 export default combineReducers({
   user: UserReducer,
@@ -33,4 +34,5 @@ export default combineReducers({
   userLocation: UserLocationReducer,
   userSearchCount: UserSearchCountReducer,
   loading: LoadingReducer,
+  addRestaurantConfirmation: AddRestaurantConfirmationReducer,
 });

@@ -19,7 +19,7 @@ class ProfileScreen extends Component {
     return (
       <Container>
         <HeaderWithButtons title="Profile" rightButton={<ProfileHeaderButton />} />
-        <Spinner visible={this.props.loading} />
+        <Spinner visible={this.props.loading} animation='fade' />
         <UserProfile user={this.props.user} />
         <LoginModal />
       </Container>
