@@ -12,6 +12,10 @@ import styles from '../../styles';
 const SwipableRestaurantList = (props) => {
   const { wishlist, userId, attemptDeleteRestaurantFromWishlist } = props;
   const ds = new ListView.DataSource({ rowHasChanged: (row1, row2) => row1 !== row2 });
+  const closeRowAndDelete = function closeRowAndDelete(data, wishlist, userId, rowId, secId, rowMap) {
+    rowMap[`${secId}${rowId}`].props.closeRow();
+    attemptDeleteRestaurantFromWishlist(data.id, wishlist, userId);
+  }
   return (
     <List
       enableEmptySections={true}
@@ -24,13 +28,13 @@ const SwipableRestaurantList = (props) => {
       }
       renderLeftHiddenRow={data => null}
       leftOpenValue={0}
-      renderRightHiddenRow={data =>
+      renderRightHiddenRow={(data, secId, rowId, rowMap) =>
         (<Button full danger onPress={() => Alert.alert(
           `Delete Restaurant`,
           `Are you sure you want to delete ${data.name}?`,
           [
             {text: 'Cancel'},
-            {text: 'Ok', onPress: () => props.attemptDeleteRestaurantFromWishlist(data.id, wishlist, userId)},
+            {text: 'Ok', onPress: () => closeRowAndDelete(data, wishlist, userId, rowId, secId, rowMap)},
           ],
         )}>
           <Icon active color="red" name="ios-trash-outline" />
