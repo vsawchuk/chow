@@ -10,6 +10,7 @@ const WishlistList = (props) => {
   const ds = new ListView.DataSource({ rowHasChanged: (row1, row2) => row1 !== row2 });
   return (
     <List
+      enableEmptySections={true}
       dataSource={ds.cloneWithRows(list)}
       renderRow={data =>
         (<WishlistListItem
