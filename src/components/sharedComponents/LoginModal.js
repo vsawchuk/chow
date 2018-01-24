@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import * as actions from '../../actions';
 import styles from '../../styles';
 
-const googleButtonSource = require('../../../assets/google_signin_buttons/2x/btn_google_signin_dark_normal_web.png');
+const googleButtonSource = require('../../../assets/btn_google_signin_dark_normal_web.png');
 
 const LoginModal = (props) => {
   return (

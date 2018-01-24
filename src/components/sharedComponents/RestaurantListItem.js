@@ -54,7 +54,7 @@ const RestaurantListItem = (props) => {
             <Text>{price}</Text>
           </View>
           <Button transparent onPress={() => Linking.openURL(url)} >
-            <Image source={require('../../../assets/YelpLogo_Trademark/Yelp_trademark_RGB.png')} style={styles.yelpLogo} />
+            <Image source={require('../../../assets/Yelp_trademark_RGB.png')} style={styles.yelpLogo} />
           </Button>
         </View>
       </Body>
