@@ -6,6 +6,7 @@
       "image": "./assets/chow_logo.png",
       "backgroundColor": "#F9A602",
       "resizeMode": "contain"
-    }
+    },
+    "privacy": "unlisted"
   }
 }
