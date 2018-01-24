@@ -113,6 +113,9 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     borderRadius: 10,
   },
+  linkBlue: {
+    color: '#007aff',
+  },
 });
 
 module.exports = styles;

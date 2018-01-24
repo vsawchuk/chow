@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text } from 'react-native';
+import { Text, View } from 'react-native';
 import { Form, Item, Label, Picker, Button } from 'native-base';
 import { connect } from 'react-redux';
 import * as actions from '../../../actions';
@@ -16,9 +16,10 @@ const AddToWishlistForm = (props) => {
   } = props;
   return (
     <Form>
-      <Item last>
+      <Item last style={styles.linkBlue}>
         <Label>Select a Wishlist</Label>
         <Picker
+          textStyle={styles.linkBlue}
           selectedValue={currentWishlist}
           onValueChange={setCurrentWishlist}
         >
@@ -27,6 +28,7 @@ const AddToWishlistForm = (props) => {
           ))}
         </Picker>
       </Item>
+      <View height={10} />
       <Button style={[styles.goldBackground, { alignSelf: 'center' }]} onPress={() => addRestaurantToWishlist(userId, currentWishlist.id, currentSelectedRestaurant, currentDisplayWishlistId)}>
         <Text style={styles.greyText}>Add to Wishlist</Text>
       </Button>
