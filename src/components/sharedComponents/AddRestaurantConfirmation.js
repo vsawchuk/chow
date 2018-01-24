@@ -8,7 +8,6 @@ import styles from '../../styles';
 class AddRestaurantConfirmation extends Component {
   componentWillReceiveProps(nextProps) {
     if (nextProps.addRestaurantConfirmation) {
-      console.log("SETTING TIMEOUT");
       setTimeout(nextProps.clearAddRestaurantConfirmation, 1000);
     }
   }

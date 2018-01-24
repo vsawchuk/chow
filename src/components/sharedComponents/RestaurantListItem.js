@@ -17,7 +17,8 @@ const RestaurantListItem = (props) => {
   let chowOffsetStyle;
   let addButton;
   let distance;
-  let haveRestaurantLocation
+  let haveRestaurantLocation;
+  let onPress;
   if ( source === 'yelp' ) {
     imageUrl = restaurant.image_url;
     displayAddress = restaurant.location.display_address;
@@ -30,12 +31,9 @@ const RestaurantListItem = (props) => {
     haveRestaurantLocation = Object.keys(restaurant).includes("latitude")  && Object.keys(restaurant).includes("longitude");
   }
   if (hasAddButton) {
-    const onPress = loggedIn ? () => setupAddRestaurant(restaurant, wishlists, userId) : props.displayLoginModal;
-    addButton = (
-      <Button icon transparent style={[{ flex: 1 }]} onPress={onPress}>
-        <Icon name="ios-add-circle" style={styles.goldText} />
-      </Button>
-    );
+    onPress = loggedIn ? () => setupAddRestaurant(restaurant, wishlists, userId) : props.displayLoginModal;
+  } else {
+    onPress = null;
   }
   if (haveLocation && haveRestaurantLocation) {
     const restaurantLatitude = source == 'yelp' ? restaurant.coordinates.latitude : restaurant.latitude;
@@ -44,7 +42,7 @@ const RestaurantListItem = (props) => {
     distance = `${distanceNumber.toFixed(1)} mi`;
   }
   return (
-    <ListItem style={chowOffsetStyle}>
+    <ListItem style={chowOffsetStyle} onPress={onPress} >
       <Thumbnail square large source={{ uri: imageUrl }} />
       <Body flexDirection="row" justifyContent="space-between" style={{ paddingLeft: 10 }}>
         <View flex={5} flexDirection="column" justifyContent="space-around">
@@ -57,7 +55,6 @@ const RestaurantListItem = (props) => {
             <Text>{distance}</Text>
             <Text>{price}</Text>
           </View>
-          {addButton}
           <Button
             transparent
             onPress={() => Linking.openURL(url)}
