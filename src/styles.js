@@ -37,9 +37,9 @@ const styles = StyleSheet.create({
   whiteBackground: {
     backgroundColor: 'white',
   },
-  yelpBurst: {
-    height: 30,
-    width: 30,
+  yelpLogo: {
+    height: 35,
+    width: 40,
   },
   centeredRowContainer: {
     flex: 1,

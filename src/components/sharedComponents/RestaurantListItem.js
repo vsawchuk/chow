@@ -13,7 +13,6 @@ const RestaurantListItem = (props) => {
   const { name, price, url } = restaurant;
   let imageUrl;
   let displayAddress;
-  let yelpOffsetText;
   let chowOffsetStyle;
   let addButton;
   let distance;
@@ -22,7 +21,6 @@ const RestaurantListItem = (props) => {
   if ( source === 'yelp' ) {
     imageUrl = restaurant.image_url;
     displayAddress = restaurant.location.display_address;
-    yelpOffsetText = "   ";
     haveRestaurantLocation = Object.keys(restaurant.coordinates).length > 0;
   } else {
     imageUrl = restaurant.imageUrl;
@@ -55,13 +53,8 @@ const RestaurantListItem = (props) => {
             <Text>{distance}</Text>
             <Text>{price}</Text>
           </View>
-          <Button
-            transparent
-            onPress={() => Linking.openURL(url)}
-            style={styles.yelpBurst}
-          >
-            <Text>{yelpOffsetText}</Text>
-            <Image source={require('../../../assets/yelp_burst/Screen/Yelp_burst_positive_RGB.png')} style={styles.yelpBurst} />
+          <Button transparent onPress={() => Linking.openURL(url)} >
+            <Image source={require('../../../assets/YelpLogo_Trademark/Yelp_trademark_RGB.png')} style={styles.yelpLogo} />
           </Button>
         </View>
       </Body>
