@@ -7,7 +7,7 @@ import styles from '../../../styles';
 
 const WishlistListItem = ({ wishlist, navigation, displayWishlist }) => {
   return (
-    <ListItem>
+    <ListItem onPress={() => displayWishlist(wishlist, navigation)}>
       <Body>
         <View flexDirection="row" justifyContent="space-between" style={{ paddingLeft: 10 }}>
           <View flexDirection="column" justifyContent="space-around">
