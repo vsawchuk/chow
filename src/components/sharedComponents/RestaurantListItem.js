@@ -9,7 +9,7 @@ import FormattedAddress from './FormattedAddress';
 import { calculateDistanceFromCoordinates } from '../../formulas';
 
 const RestaurantListItem = (props) => {
-  const { restaurant, hasAddButton, setupAddRestaurant, source, haveLocation, userLocation, loggedIn, wishlists, userId } = props;
+  const { restaurant, hasAddButton, setupAddRestaurant, source, haveLocation, userLocation, loggedIn, wishlists, userId, currentDisplayWishlistId } = props;
   const { name, price, url } = restaurant;
   let imageUrl;
   let displayAddress;
@@ -29,7 +29,7 @@ const RestaurantListItem = (props) => {
     haveRestaurantLocation = Object.keys(restaurant).includes("latitude")  && Object.keys(restaurant).includes("longitude");
   }
   if (hasAddButton) {
-    onPress = loggedIn ? () => setupAddRestaurant(restaurant, wishlists, userId) : props.displayLoginModal;
+    onPress = loggedIn ? () => setupAddRestaurant(restaurant, wishlists, userId, currentDisplayWishlistId) : props.displayLoginModal;
   } else {
     onPress = null;
   }
@@ -66,7 +66,8 @@ const mapStateToProps = (state, ownProps) => {
   const loggedIn = Object.keys(state.user).length > 0;
   const haveLocation = Object.keys(state.userLocation).length > 0;
   const userId = loggedIn ? state.user.id : null;
-  return { haveLocation, userLocation: state.userLocation, loggedIn, wishlists: state.wishlists, userId };
+  const currentDisplayWishlistId = Object.keys(state.currentDisplayWishlist).length > 0 ? state.currentDisplayWishlist.id : null;
+  return { haveLocation, userLocation: state.userLocation, loggedIn, wishlists: state.wishlists, userId, currentDisplayWishlistId };
 };
 
 export default connect(mapStateToProps, actions)(RestaurantListItem);

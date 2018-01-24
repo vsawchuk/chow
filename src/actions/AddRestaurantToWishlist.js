@@ -6,7 +6,7 @@ import { setAddRestaurantConfirmation } from './SetAddRestaurantConfirmation';
 
 // TODO: ensure that a single wishlist re-renders with new restaurant after adding
 
-export const addRestaurantToWishlist = (userId, wishlistId, restaurant) => {
+export const addRestaurantToWishlist = (userId, wishlistId, restaurant, currentDisplayWishlistId) => {
   const requestRestaurant = {
     name: restaurant.name,
     imageUrl: restaurant.image_url,
@@ -19,11 +19,12 @@ export const addRestaurantToWishlist = (userId, wishlistId, restaurant) => {
     latitude: restaurant.coordinates.latitude,
     longitude: restaurant.coordinates.longitude,
   };
+  const updateDisplayId = (wishlistId == currentDisplayWishlistId) ? wishlistId : null;
   return (dispatch) => {
     axios.post(`/users/${userId}/wishlists/${wishlistId}/add`, requestRestaurant)
       .then((chowResponse) => {
         dispatch(setAddRestaurantConfirmation());
-        dispatch(getWishlists(userId));
+        dispatch(getWishlists(userId, updateDisplayId));
         dispatch(closeAddRestaurantModal());
         dispatch(clearCurrentSelectedRestaurant());
       })

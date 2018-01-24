@@ -11,7 +11,8 @@ const AddToWishlistForm = (props) => {
     setCurrentWishlist,
     userId,
     currentSelectedRestaurant,
-    addRestaurantToWishlist
+    addRestaurantToWishlist,
+    currentDisplayWishlistId
   } = props;
   return (
     <Form>
@@ -26,7 +27,7 @@ const AddToWishlistForm = (props) => {
           ))}
         </Picker>
       </Item>
-      <Button style={[styles.goldBackground, { alignSelf: 'center' }]} onPress={() => addRestaurantToWishlist(userId, currentWishlist.id, currentSelectedRestaurant)}>
+      <Button style={[styles.goldBackground, { alignSelf: 'center' }]} onPress={() => addRestaurantToWishlist(userId, currentWishlist.id, currentSelectedRestaurant, currentDisplayWishlistId)}>
         <Text style={styles.greyText}>Add to Wishlist</Text>
       </Button>
     </Form>
@@ -35,11 +36,13 @@ const AddToWishlistForm = (props) => {
 
 const mapStateToProps = (state, ownProps) => {
   const userId = (Object.keys(state.user).length > 0) ? state.user.id : -1;
+  const currentDisplayWishlistId = Object.keys(state.currentDisplayWishlist).length > 0 ? state.currentDisplayWishlist.id : null;
   return {
     currentSelectedRestaurant: state.currentSelectedRestaurant,
     currentWishlist: state.currentWishlist,
     userId,
     wishlists: state.wishlists,
+    currentDisplayWishlistId,
   };
 };
 
