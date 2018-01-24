@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text } from 'react-native';
+import { Text, View } from 'react-native';
 import { Button, Form, Item, Label, Input } from 'native-base';
 import { connect } from 'react-redux';
 import * as actions from '../../../actions';
@@ -48,6 +48,7 @@ class WishlistModal extends Component {
             <Label>Wishlist Name</Label>
             <Input onChangeText={this.changeTextInput} value={this.state.textInput} />
           </Item>
+          <View height={10} />
           <Button
             style={[styles.goldBackground, { alignSelf: 'center' }]}
             onPress={this.state.onPress}
