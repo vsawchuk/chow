@@ -7,8 +7,6 @@ import HeaderWithButtons from '../sharedComponents/HeaderWithButtons';
 import * as actions from '../../actions';
 import styles from '../../styles';
 
-// TODO: on re-render, close hidden rows
-
 const SwipableRestaurantList = (props) => {
   const { wishlist, userId, attemptDeleteRestaurantFromWishlist } = props;
   const ds = new ListView.DataSource({ rowHasChanged: (row1, row2) => row1 !== row2 });
