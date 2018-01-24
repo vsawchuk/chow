@@ -11,7 +11,7 @@ const GOLD = '#F9A602';
 const AppNavigator = TabNavigator({
   Search: { screen: SearchScreen },
   Wishlists: {
-    screen: WishlistNavigator,
+    screen: ({ navigation }) => <WishlistNavigator screenProps={{ rootNavigation: navigation }} />,
     navigationOptions: {
       tabBarIcon: ({ tintColor }) => (
         <Icon name="ios-list-box-outline" style={[{ color: tintColor }]} />

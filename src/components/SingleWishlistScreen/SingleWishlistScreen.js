@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { ListView, Alert } from 'react-native';
 import { connect } from 'react-redux';
 import { Container, Content, Button, Icon, List } from 'native-base';
+import { NavigationActions } from 'react-navigation';
 import RestaurantListItem from '../sharedComponents/RestaurantListItem';
 import HeaderWithButtons from '../sharedComponents/HeaderWithButtons';
 import SwipableRestaurantList from './SwipableRestaurantList';
@@ -12,7 +13,7 @@ class SingleWishlistScreen extends Component {
   componentWillReceiveProps(nextProps) {
     if (!nextProps.loggedIn) {
       nextProps.navigation.goBack();
-      nextProps.navigation.goBack(null);
+      nextProps.screenProps.rootNavigation.navigate('Profile');
     }
   }
   render() {
