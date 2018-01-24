@@ -36,3 +36,4 @@ export * from './AddRestaurantToWishlist';
 export * from './AttemptDeleteRestaurantFromWishlist';
 export * from './DisplayWishlist';
 export * from './GetUserLocation';
+export * from './ClearAddRestaurantConfirmation';

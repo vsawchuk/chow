@@ -2,6 +2,7 @@ import axios from 'axios';
 import { clearCurrentSelectedRestaurant } from './ClearCurrentSelectedRestaurant';
 import { closeAddRestaurantModal } from './CloseAddRestaurantModal';
 import { getWishlists } from './GetWishlists';
+import { setAddRestaurantConfirmation } from './SetAddRestaurantConfirmation';
 
 // TODO: ensure that a single wishlist re-renders with new restaurant after adding
 
@@ -21,6 +22,7 @@ export const addRestaurantToWishlist = (userId, wishlistId, restaurant) => {
   return (dispatch) => {
     axios.post(`/users/${userId}/wishlists/${wishlistId}/add`, requestRestaurant)
       .then((chowResponse) => {
+        dispatch(setAddRestaurantConfirmation());
         dispatch(getWishlists(userId));
         dispatch(closeAddRestaurantModal());
         dispatch(clearCurrentSelectedRestaurant());

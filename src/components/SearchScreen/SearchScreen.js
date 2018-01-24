@@ -7,6 +7,7 @@ import SearchHeader from './SearchScreenComponents/SearchHeader';
 import AddToWishlistForm from './SearchScreenComponents/AddToWishlistForm';
 import FullScreenModal from '../sharedComponents/FullScreenModal';
 import RestaurantList from '../sharedComponents/RestaurantList';
+import AddRestaurantConfirmation from '../sharedComponents/AddRestaurantConfirmation';
 
 class SearchScreen extends Component {
   componentWillMount() {
@@ -48,6 +49,7 @@ class SearchScreen extends Component {
         <SearchHeader />
         <Content>
           {listContent}
+          <AddRestaurantConfirmation />
           <FullScreenModal
             isVisible={this.props.addRestaurantModalVisible}
             closeModal={this.props.closeAddRestaurantModal}

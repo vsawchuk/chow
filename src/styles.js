@@ -100,6 +100,19 @@ const styles = StyleSheet.create({
   searchBarIconPadding: {
     paddingTop: 8,
   },
+  confirmationIcon: {
+    fontSize: 100,
+    color: GOLD,
+  },
+  confirmationButton: {
+    backgroundColor: 'rgba(48, 48, 48, 0.3)',
+    height: 150,
+    width: 150,
+    alignItems: 'center',
+    justifyContent: 'center',
+    alignSelf: 'center',
+    borderRadius: 10,
+  },
 });
 
 module.exports = styles;
