@@ -1,4 +1,3 @@
-// TODO: change default state to false once verified working with redux
 export default (state = false, action) => {
   switch (action.type) {
     case 'display_login_modal': {

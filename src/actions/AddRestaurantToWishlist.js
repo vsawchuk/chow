@@ -4,8 +4,6 @@ import { closeAddRestaurantModal } from './CloseAddRestaurantModal';
 import { getWishlists } from './GetWishlists';
 import { setAddRestaurantConfirmation } from './SetAddRestaurantConfirmation';
 
-// TODO: ensure that a single wishlist re-renders with new restaurant after adding
-
 export const addRestaurantToWishlist = (userId, wishlistId, restaurant, currentDisplayWishlistId) => {
   const requestRestaurant = {
     name: restaurant.name,
