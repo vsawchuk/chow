@@ -16,7 +16,7 @@ const AddToWishlistForm = (props) => {
   } = props;
   return (
     <Form>
-      <Item last style={styles.linkBlue}>
+      <Item last >
         <Label>Select a Wishlist</Label>
         <Picker
           textStyle={styles.linkBlue}
