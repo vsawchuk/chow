@@ -91,14 +91,14 @@ const styles = StyleSheet.create({
     paddingLeft: 15,
   },
   searchBar: {
-    paddingBottom: 10,
+    paddingBottom: 1,
     backgroundColor: GREY,
   },
   searchBarTextPadding: {
-    paddingTop: 6,
+    paddingTop: 0,
   },
   searchBarIconPadding: {
-    paddingTop: 8,
+    paddingTop: 2,
   },
   confirmationIcon: {
     fontSize: 100,

@@ -12,7 +12,7 @@ const SearchHeader = (props) => {
   }
   const { height, width } = Dimensions.get('window');
   return (
-    <Header style={[styles.header, {height: 130}]} searchBar rounded flexDirection="column">
+    <Header style={[{height: 130}, styles.header]} searchBar rounded flexDirection="column">
       <View marginTop={5} height={30} width={width * 0.80} >
         <Item style={styles.searchBar} >
           <View style={styles.searchBarIconPadding} >
