@@ -28,6 +28,7 @@
     "native-base": "^2.3.5",
     "react": "16.4.1",
     "react-native": "^0.55.4",
+    "react-native-card-flip": "^1.0.3",
     "react-native-loading-spinner-overlay": "^0.5.2",
     "react-navigation": "^1.0.0-beta.22",
     "react-redux": "^5.0.6",

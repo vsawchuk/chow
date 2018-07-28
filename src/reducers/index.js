@@ -9,6 +9,7 @@ import LoginModalReducer from './LoginModalReducer';
 import WishlistModalReducer from './WishlistModalReducer';
 import WishlistModalTypeReducer from './WishlistModalTypeReducer';
 import AddRestaurantModalReducer from './AddRestaurantModalReducer';
+import SearchListViewReducer from './SearchListViewReducer';
 import SearchResultsReducer from './SearchResultsReducer';
 import SearchLocationReducer from './SearchLocationReducer';
 import SearchTermReducer from './SearchTermReducer';
@@ -28,6 +29,7 @@ export default combineReducers({
   wishlistModalType: WishlistModalTypeReducer,
   wishlistModalVisible: WishlistModalReducer,
   addRestaurantModalVisible: AddRestaurantModalReducer,
+  searchListView: SearchListViewReducer,
   searchResults: SearchResultsReducer,
   searchTerm: SearchTermReducer,
   searchLocation: SearchLocationReducer,

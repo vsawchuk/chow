@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { MapView } from 'expo';
 import { View, Text, Dimensions } from 'react-native';
 import { Container, Icon, Content } from 'native-base';
 import { connect } from 'react-redux';
@@ -7,6 +8,7 @@ import SearchHeader from './SearchScreenComponents/SearchHeader';
 import AddToWishlistForm from './SearchScreenComponents/AddToWishlistForm';
 import FullScreenModal from '../sharedComponents/FullScreenModal';
 import RestaurantList from '../sharedComponents/RestaurantList';
+import RestaurantMap from '../sharedComponents/RestaurantMap';
 import AddRestaurantConfirmation from '../sharedComponents/AddRestaurantConfirmation';
 
 class SearchScreen extends Component {
@@ -32,8 +34,14 @@ class SearchScreen extends Component {
           source='yelp'
         />
       )
+      mapContent = (
+        <View style={{height:574, backgroundColor: "red"}}>
+          <RestaurantMap restaurants={this.props.searchResults} />
+        </View>
+      )
+      restaurantContent = this.props.listView ? listContent : mapContent
     } else {
-      listContent = (
+      restaurantContent = (
         <View alignItems='center' >
           <View height={200} />
           <View width={Dimensions.get('window').width - 50} >
@@ -43,12 +51,15 @@ class SearchScreen extends Component {
           </View>
         </View>
       )
+      mapContent = (
+        <View />
+      )
     }
     return (
       <Container>
         <SearchHeader />
         <Content>
-          {listContent}
+          {restaurantContent}
           <AddRestaurantConfirmation />
           <FullScreenModal
             isVisible={this.props.addRestaurantModalVisible}
@@ -64,6 +75,7 @@ class SearchScreen extends Component {
 
 const mapStateToProps = (state, ownProps) => {
   return {
+    listView: state.searchListView,
     loading: state.loading,
     userLocation: state.userLocation,
     userSearchCount: state.userSearchCount,

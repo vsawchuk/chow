@@ -24,6 +24,7 @@ export * from './PrepWishlistModal';
 export * from './AttemptAddWishlist';
 export * from './AttemptEditWishlist';
 export * from './AttemptDeleteWishlist';
+export * from './SetSearchListView';
 export * from './SetSearchTerm';
 export * from './SetSearchLocation';
 export * from './SearchYelp';

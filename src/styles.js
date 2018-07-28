@@ -100,6 +100,9 @@ const styles = StyleSheet.create({
   searchBarIconPadding: {
     paddingTop: 2,
   },
+  whiteText: {
+    color: 'white',
+  },
   confirmationIcon: {
     fontSize: 100,
     color: GOLD,
