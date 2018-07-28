@@ -19,7 +19,7 @@ const RestaurantMap = ({restaurants}) => {
   return (
     <MapView
       style={{flex: 1}}
-      initialRegion={{
+      region={{
         latitude: midLatitude,
         longitude: midLongitude,
         latitudeDelta: latDifference + latLongOffset,
