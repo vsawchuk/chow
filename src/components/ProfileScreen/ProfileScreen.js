@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Container, Icon } from 'native-base';
 import { connect } from 'react-redux';
-import Spinner from 'react-native-loading-spinner-overlay';
 import * as actions from '../../actions';
 import HeaderWithButtons from '../sharedComponents/HeaderWithButtons';
 import UserProfile from './ProfileScreenComponents/UserProfile';
@@ -19,7 +18,6 @@ class ProfileScreen extends Component {
     return (
       <Container>
         <HeaderWithButtons title="Profile" rightButton={<ProfileHeaderButton />} />
-        <Spinner visible={this.props.loading} animation='fade' />
         <UserProfile user={this.props.user} />
         <LoginModal />
       </Container>
@@ -29,7 +27,11 @@ class ProfileScreen extends Component {
 
 const mapStateToProps = (state, ownProps) => {
   const loggedIn = Object.keys(state.user).length > 0;
-  return { loggedIn, user: state.user, logInModalVisible: state.logInModalVisible, loading: state.loading };
+  return {
+    loggedIn,
+    logInModalVisible: state.logInModalVisible,
+    user: state.user,
+  };
 };
 
 export default connect(mapStateToProps, actions)(ProfileScreen);

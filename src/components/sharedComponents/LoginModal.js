@@ -19,7 +19,10 @@ const LoginModal = (props) => {
           </View>
           <View style={styles.popupModalCenterButtonContainer}>
             <View>
-              <Button onPress={props.attemptLogin}>
+              <Button onPress={() => {
+                props.closeLoginModal();
+                props.attemptLogin();
+              }}>
                 <Image source={googleButtonSource} />
               </Button>
             </View>

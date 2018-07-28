@@ -7,7 +7,6 @@ import { clearLoading } from './ClearLoading';
 
 export const attemptLogin = () => {
   return (dispatch) => {
-    dispatch(setLoading());
     Expo.Google.logInAsync({
       iosClientId: GOOGLE_OAUTH_IOS_CLIENT_ID,
       scopes: ['profile', 'email'],
@@ -17,7 +16,6 @@ export const attemptLogin = () => {
         dispatch(confirmLogin(googleResponse));
       })
       .catch((error) => {
-        dispatch(clearLoading());
         console.log('ERROR GOOGLE LOGIN');
       });
   };
