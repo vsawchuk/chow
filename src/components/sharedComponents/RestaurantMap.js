@@ -1,5 +1,6 @@
 import React from 'react';
 import { MapView } from 'expo';
+import RestaurantListItem from './RestaurantListItem';
 import styles from '../../styles';
 
 const getDescriptionFromCategories = function getDescriptionFromCategories(categories) {
@@ -19,6 +20,7 @@ const RestaurantMap = ({restaurants}) => {
   return (
     <MapView
       style={{flex: 1}}
+      showsUserLocation={true}
       region={{
         latitude: midLatitude,
         longitude: midLongitude,
@@ -32,7 +34,15 @@ const RestaurantMap = ({restaurants}) => {
           coordinate={restaurant.coordinates}
           title={restaurant.name}
           description={getDescriptionFromCategories(restaurant.categories)}
-        />
+        >
+          <MapView.Callout>
+            <RestaurantListItem
+                restaurant={restaurant}
+                hasAddButton={true}
+                source={'yelp'}
+              />
+          </MapView.Callout>
+        </MapView.Marker>
       ))}
     </MapView>
   )
