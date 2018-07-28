@@ -3,6 +3,7 @@ import { MapView } from 'expo';
 import { View, Text, Dimensions } from 'react-native';
 import { Container, Icon, Content } from 'native-base';
 import { connect } from 'react-redux';
+import Spinner from 'react-native-loading-spinner-overlay';
 import * as actions from '../../actions';
 import SearchHeader from './SearchScreenComponents/SearchHeader';
 import AddToWishlistForm from './SearchScreenComponents/AddToWishlistForm';
@@ -58,6 +59,7 @@ class SearchScreen extends Component {
     return (
       <Container>
         <SearchHeader />
+        <Spinner visible={this.props.loading} animation='fade' />
         <Content>
           {restaurantContent}
           <AddRestaurantConfirmation />
